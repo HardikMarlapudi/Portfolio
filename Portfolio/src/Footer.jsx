@@ -9,10 +9,6 @@ function Footer() {
 
     return(
         <>
-            <footer>
-                <p id="footer">&copy; 2025 Hardik Marlapudi. All Rights Reserved.</p>
-            </footer>
-
             <div className="icons2">
                  <FaGithub /> <BiLogoGmail /> <FaLinkedin /> <FaInstagram />
             </div>

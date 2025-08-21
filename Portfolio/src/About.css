@@ -13,17 +13,20 @@
     font-size: 2rem;
     margin-top: 2rem;
     margin-bottom: 1rem;
+    text-align: center;
 }
 
 .about-container p {
     font-size: 1.1rem;
     margin: 0.5rem 0;
+    text-align: center;
 }
 
 #activities {
     margin-top: 1rem;
     padding-left: 1.5rem;
     list-style: disc;
+    text-align: center;
 }
 
 .skill-icons,
@@ -49,7 +52,30 @@
     }
 }
 
-.skill-icons,
-.tool-icons {
-    font-size: 2rem;
+.skill-icons svg {
+    color: #ffffff;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.skill-icons svg:hover {
+    color:#a971f5;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.tool-icons svg {
+    color: #ffffff;
+    transition: scale(1.2);
+    cursor: pointer;
+}
+
+.tool-icons svg {
+    color: #ffffff;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.tool-icons svg:hover {
+    color: #a971f5;
+    transform: scale(1.2);
+    cursor: pointer;
 }

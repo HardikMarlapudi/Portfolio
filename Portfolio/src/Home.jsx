@@ -8,12 +8,13 @@ import { FaInstagram } from 'react-icons/fa';
 
 function Home() {
 
+    // Javascript comes here
+
     return(
         <>
         <div className="intro">
             <h1 id="title">Hi there! </h1>
             <p id="name">I'm Hardik Marlapudi</p>
-            <img src="https://readme-typing-svg.herokuapp.com/?font=Fira+Code&duration=3000&pause=1000&color=1D9BF0&center=true&vCenter=true&width=435&lines=Software+Engineer" alt="Typing SVG" />
         </div>
 
         <div className="aboutMe">
@@ -29,7 +30,12 @@ function Home() {
         <div className="border">
             <h1 id="firstBorder">FIND ME ON</h1>
             <p>Feel free to connect me</p>
-            <p id="buttons"> <FaGithub /> <BiLogoGmail /> <FaLinkedin /> <FaInstagram /> </p>
+            <p id="buttons">
+                <a href="https://github.com/HardikMarlapudi" target="_blank" rel= "noopener noreferrer"><FaGithub /></a>
+                <a href="https://mail.google.com/hardik.a.marlapudi@gmail.com"><BiLogoGmail /></a>
+                <a href="https://www.linkedin.com/in/hardik-marlapudi-b47a14307/" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
+                <a href="https://www.instagram.com/hardik_marlapudi" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
+            </p>
         </div>
         </>
     );

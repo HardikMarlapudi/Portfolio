@@ -6,24 +6,28 @@ body {
     background-color: #0d0c1d;
     color: #ffffff;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
 }
 
 /* Intro Section */
 .intro {
+    background: linear-gradient(to right, #a971f5, #8b07e3);
+    color: white;
+    padding: 80px 20px;
     text-align: center;
-    padding: 4rem 2rem 2rem;
+    border-color: #a971f5;
 }
 
 #title {
     font-size: 3rem;
-    color: #a971f5;
     margin-bottom: 0.5rem;
 }
 
 #name {
     font-size: 2rem;
-    color: #ffffff;
-    margin-bottom: 1.5rem;
+    font-weight: 600;
+    color: #00ffcc;
 }
 
 .intro img {
@@ -51,7 +55,7 @@ body {
 #aboutme {
     font-size: 1.1rem;
     line-height: 1.8;
-    margin: 0.8rem 0;
+    margin: 0.8rem;
     text-align: justify;
 }
 
@@ -69,12 +73,12 @@ body {
     margin-bottom: 1rem;
 }
 
-#buttons {
-    margin-top: 1rem;
-    font-size: 2rem;
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
+#buttons a {
+   margin: 0.5rem;
+}
+
+#buttons a:hover {
+    color: #00ffcc;
 }
 
 #buttons svg {
@@ -140,6 +144,6 @@ body {
 @media (max-width: 768px) {
     body {
         font-size: 14px;
-        overflow-x: hiddne;
+        overflow-x: hidden;
     }
 }

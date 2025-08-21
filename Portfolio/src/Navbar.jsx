@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom'; // ✅ add this
+import { NavLink } from 'react-router-dom';
 import './Navbar.css';
 
 export default function Navbar() {
@@ -21,7 +21,7 @@ export default function Navbar() {
 
       <ul id="primary-navigation" className={`nav-links ${menuOpen ? 'open' : ''}`}>
         <li>
-          <NavLink to="/" onClick={closeMenu} className={({ isActive }) => (isActive ? 'active' : '')}>
+          <NavLink to="/home" onClick={closeMenu} className={({ isActive }) => (isActive ? 'active' : '')}>
             Home
           </NavLink>
         </li>
