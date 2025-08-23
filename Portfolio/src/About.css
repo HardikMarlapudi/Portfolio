@@ -23,10 +23,8 @@
 }
 
 #activities {
-    margin-top: 1rem;
-    padding-left: 1.5rem;
-    list-style: disc;
     text-align: center;
+    margin: 3rem;
 }
 
 .skill-icons,

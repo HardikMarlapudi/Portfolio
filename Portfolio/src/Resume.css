@@ -1,0 +1,14 @@
+#title {
+    text-align: center;
+    color: #a971f5;
+}
+
+#resume {
+    display: block;
+    text-align: center;
+    margin: 5rem;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}

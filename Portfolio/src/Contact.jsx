@@ -11,7 +11,7 @@ function Contact() {
     });
 
     const [touched, setTouched] = useState({});
-    const [status, setStatus] = useState('idle');
+    const [status, setStatus] = useState(true);
 
     const errors = validate(values);
 
@@ -22,7 +22,7 @@ function Contact() {
         else if (!/\S+@\S+\.\S+/.test(v.email)) e.email = 'Please enter a valid email address.';
         if (!v.subject.trim()) e.address = 'Please enter your subject.';
         if (!v.message.trim()) e.message = 'Please enter your message.';
-        
+
         return e;
     }
 
@@ -80,7 +80,6 @@ function Contact() {
                     )}
 
                     <form noValidate onClick={handleSubmit}>
-                        {/* Honeypot (hidden) */}
                         <input
                         type="text"
                         name="company"

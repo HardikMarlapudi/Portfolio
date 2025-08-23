@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Navbar.css';
 
-export default function Navbar() {
+function Navbar() {
+
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleMenu = () => setMenuOpen(v => !v);
   const closeMenu = () => setMenuOpen(false);
@@ -35,6 +36,19 @@ export default function Navbar() {
             Projects
           </NavLink>
         </li>
+
+        <li>
+         <NavLink to="/resume" onClick={closeMenu} className={({ isActive }) => (isActive ? 'active' : '')}>
+            Resume
+        </NavLink>
+        </li>
+
+        <li>
+        <NavLink to="/Achievements" onClick={closeMenu} className={({ isActive }) => (isActive ? 'active' : '')}>
+            Achivements
+        </NavLink>
+        </li>
+
         <li>
           <NavLink to="/contact" onClick={closeMenu} className={({ isActive }) => (isActive ? 'active' : '')}>
             Contact
@@ -44,3 +58,6 @@ export default function Navbar() {
     </nav>
   );
 }
+
+
+export default Navbar;

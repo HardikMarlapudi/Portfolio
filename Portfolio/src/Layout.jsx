@@ -1,8 +1,9 @@
+import React, {useEffect} from "react";
 import {Outlet, useLocation} from 'react-router-dom';
-import {useEffect} from "react";
 import Navbar from './Navbar';
 
-export default function Layout() {
+function Layout() {
+
     const {pathname} = useLocation();
 
     useEffect = () => {
@@ -25,3 +26,5 @@ export default function Layout() {
         </>
     );
 }
+
+export default Layout;

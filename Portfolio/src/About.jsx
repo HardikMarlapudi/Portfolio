@@ -6,6 +6,7 @@ import { DiNodejs, DiMongodb } from "react-icons/di";
 import { FaGitAlt } from "react-icons/fa6";
 import { SiMacos } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
+import { DiEclipse } from "react-icons/di";
 import GitHubCalendar from 'react-github-calendar';
 
 function About() {
@@ -13,14 +14,16 @@ function About() {
   return (
     <div className="about-container">
       <h2>Know Who I'M</h2>
-      <p>Hello there, I am Hardik Marlapudi from Blythewood, South Carolina.</p>
+      <p>Hello there, I am Hardik Marlapudi and I'm from Blythewood, South Carolina.</p>
       <p id="firstParagraph">I am a student from the University of South Carolina at Columbia.</p>
       <p id="secondParagraph">I am majoring in Computer Information Systems and concentrating in Cybersecurity.</p>
       <p id="thirdParagraph">Apart from coding, some activities that I love to do!</p>
+
+      
       <ol id="activities">
-        <li>Playing Video Games</li>
-        <li>Travelling</li>
-        <li>Playing Tennis</li>
+        <b>Playing Video Games</b><br></br>
+        <b>Travelling</b><br></br>
+        <b>Playing Tennis</b><br></br>
       </ol>
 
       <h2 id="skillet">Professional Skillset</h2>
@@ -41,6 +44,7 @@ function About() {
       <div className="tool-icons">
         <a href="https://www.apple.com/macos/macos-sequoia/" target="_blank"><SiMacos /></a>
         <a href="https://code.visualstudio.com/" target="_blank"><VscVscode /></a>
+        <a href="https://www.eclipse.org/" target="_blank"><DiEclipse /></a>
       </div>
 
       <h2 id="days-I-code">Days I Code</h2>
