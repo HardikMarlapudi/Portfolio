@@ -4,11 +4,11 @@ import './Achivements.css';
 function Achivements() {
 
     return (
+
         <>
         <div className="title">
             <h1 id="title">Achivements</h1>
         </div>
-
 
             <div className="awards">
             <p>University of South Carolina - President's List (Superlative Award)</p>

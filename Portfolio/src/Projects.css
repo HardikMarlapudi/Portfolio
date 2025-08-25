@@ -64,13 +64,13 @@
     box-shadow: var(--shadow-hover);
     border-color: color-mix(in oklab, var(--accent) 35%, var(--card-border));
     cursor: pointer;
-    
 }
 
 .project-card-view p {
     margin: 0;
     line-height: 1.65;
     color: var(--text);
+    color: white;
 }
 
 .project-card-view p:first-child {
