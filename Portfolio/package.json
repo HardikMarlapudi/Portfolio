@@ -1,12 +1,12 @@
 {
-  "homepage": "https:/HardikMarlapudi.github.io/Portfolio",
-  "private": true,
+  "name": "portfolio",
+  "homepage": "https://HardikMarlapudi.github.io/Portfolio",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint .",
+    "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
