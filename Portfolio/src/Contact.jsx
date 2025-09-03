@@ -27,11 +27,11 @@ function Contact() {
         const data = await response.json();
 
         if(data.success) {
-            setResult("Thank you, your form has been submitted successfully");
+            setResult("Thank you, your form has been submitted successfully.");
             event.target.reset();
         } else {
             console.log("Error", data);
-            setResult("Sorry, something went wrong while submitting the form");
+            setResult("Sorry, something went wrong while submitting the form.");
         }
     }
     return (

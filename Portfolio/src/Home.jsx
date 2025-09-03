@@ -8,36 +8,17 @@ import { FaInstagram } from 'react-icons/fa';
 
 function Home() {
 
-    function github() {
-        window.location.href = "https://github.com/HardikMarlapudi";
-        return;
-    }
-
-    function gmail() {
-        window.location.href = "https://mail.google.com/hardik.a.marlapudi@gmail.com";
-        return;
-    }
-
-    function linkedin() {
-        window.location.href = "https://www.linkedin.com/in/hardik-marlapudi-b47a14307/";
-        return;
-    }
-
-    function instagram() {
-        window.location.href = "https://www.instagram.com/hardik_marlapudi";
-        return;
-    }
-
     return (
         <>
         <div className="intro">
             <h1 id="title">Hi there! </h1>
+            <center><img id="profilePhoto" src="/photo/Profile-pic.png"></img></center>
             <p id="name">I'm Hardik Marlapudi</p>
         </div>
 
         <div className="aboutMe">
             <h2 id="aboutMyself">LET ME INTRODUCE MYSELF</h2>
-            <p id="aboutMe">I am a Student at the University of South Carolina and I fell love with programming for quite a while now.</p>
+            <p id="aboutMe">I am a student at the University of South Carolina and I fell love with programming for quite a while now.</p>
             <p id="aboutMe">I am fluent in classics like JavaScript, React.js, and Java.</p>
 
             <p id="aboutMe">My Field of Interest's are building new Web Technologies and Products and also in areas related to Blockchain.</p>
@@ -49,10 +30,10 @@ function Home() {
             <h1 id="firstBorder">FIND ME ON</h1>
             <p>Feel free to connect me</p>
             <p id="buttons">
-                <a target="_blank" rel="noopener noreferrer" onClick={github}><FaGithub /></a>
-                <a target="_blank" rel="noopener noreferrer" onClick={gmail}><BiLogoGmail /></a>
-                <a target="_blank" rel="noopener noreferrer" onClick={linkedin}><FaLinkedin /></a>
-                <a target="_blank" rel="noopener noreferrer" onClick={instagram}><FaInstagram /></a>
+                <a href="https://www.instagram.com/hardik_marlapudi" target="_blank"><FaGithub /></a>
+                <a href="https://www.hardik.a.marlapudi@gmail.com" target="_blank"><BiLogoGmail /></a>
+                <a href="https://www.linkedin.com/in/hardik-marlapudi-b47a14307/" target="_blank"><FaLinkedin /></a>
+                <a href="https://www.instagram.com/hardik_marlapudi" target="_blank"><FaInstagram /></a>
             </p>
         </div>
         </>

@@ -4,9 +4,10 @@ import { FaCss3Alt, FaReact, FaJava, FaGithub } from "react-icons/fa";
 import { IoLogoJavascript, IoLogoVue } from "react-icons/io5";
 import { DiNodejs, DiMongodb } from "react-icons/di";
 import { FaGitAlt } from "react-icons/fa6";
-import { SiMacos } from "react-icons/si";
+import { SiMacos} from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
 import { DiEclipse } from "react-icons/di";
+import { SiPycharm } from "react-icons/si";
 import GitHubCalendar from 'react-github-calendar';
 
 function About() {
@@ -45,6 +46,7 @@ function About() {
         <a href="https://www.apple.com/macos/macos-sequoia/" target="_blank"><SiMacos /></a>
         <a href="https://code.visualstudio.com/" target="_blank"><VscVscode /></a>
         <a href="https://www.eclipse.org/" target="_blank"><DiEclipse /></a>
+        <a href="https://www.jetbrains.com/pycharm/" target="_blank"><SiPycharm /></a>
       </div>
 
       <h2 id="days-I-code">Days I Code</h2>

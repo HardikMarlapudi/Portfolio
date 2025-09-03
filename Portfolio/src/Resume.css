@@ -12,3 +12,8 @@
     color: white;
     cursor: pointer;
 }
+
+#aboutResume {
+    font-size: 15px;
+    font-weight: bold;
+}

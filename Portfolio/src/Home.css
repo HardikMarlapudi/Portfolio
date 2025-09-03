@@ -1,5 +1,4 @@
 /* Home.css */
-
 body {
     margin: 0;
     padding: 0;
@@ -8,6 +7,18 @@ body {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
+}
+
+#profilePhoto {
+    border: 10px solid;
+    border-radius: 120rem;
+    border-color: #a971f5;
+    width: 15%;
+}
+
+#profilePhoto:hover {
+    border-color: #8b07e3;
+    cursor: pointer;
 }
 
 /* Intro Section */
@@ -27,7 +38,7 @@ body {
 #name {
     font-size: 2rem;
     font-weight: 600;
-    color: #00ffcc;
+    color: white;
 }
 
 .intro img {
