@@ -1,11 +1,9 @@
 {
   "name": "portfolio",
-  "homepage": "https://HardikMarlapudi.github.io/Portfolio",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
