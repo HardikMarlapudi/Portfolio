@@ -11,7 +11,7 @@ function Home() {
         <>
         <div className="intro">
             <h1 id="title">Hi there! </h1>
-            <center><img src="Portfolio/photo/Profile-pic.png" id="profilePhoto" alt="Profile Pic"></img></center>
+            <center><img src="portfolio/photo/Profile-pic.png" id="profilePhoto" alt="Profile Pic"></img></center>
             <p id="name">I'm Hardik Marlapudi</p>
         </div>
 
