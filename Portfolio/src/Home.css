@@ -158,3 +158,28 @@ body {
         overflow-x: hidden;
     }
 }
+
+.fade-in {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+}
+
+.fade-in:nth-child(even) {
+    animation-delay: 0.2s;
+}
+
+.fade-in:nth-child(odd) {
+    animation-delay: 0.2s;
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(20deg);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(40deg);
+        opacity: 1;
+    }
+}

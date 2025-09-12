@@ -9,13 +9,13 @@ function Home() {
 
     return (
         <>
-        <div className="intro">
+        <div className="intro fade-in">
             <h1 id="title">Hi there! </h1>
-            <center><img src="portfolio/photo/Profile-pic.png" id="profilePhoto" alt="Profile Pic"></img></center>
+            <center><img src="Portfolio/photo/Profile-pic.png" id="profilePhoto" alt="Profile Pic"></img></center>
             <p id="name">I'm Hardik Marlapudi</p>
         </div>
 
-        <div className="aboutMe">
+        <div className="aboutMe fade-in">
             <h2 id="aboutMyself">LET ME INTRODUCE MYSELF</h2>
             <p id="aboutMe">I am a student at the University of South Carolina and I fell love with programming for quite a while now.</p>
             <p id="aboutMe">I am fluent in classics like JavaScript, React.js, and Java.</p>
@@ -25,7 +25,7 @@ function Home() {
             <p id="aboutme">Whenever possible, I also like applying my passion for developing products with Node.js and Modern JavaScript Libraries like React.js and Vue.js</p>
         </div>
 
-        <div className="border">
+        <div className="border fade-in">
             <h1 id="firstBorder">FIND ME ON</h1>
             <p>Feel free to connect me</p>
             <p id="buttons">

@@ -28,6 +28,10 @@
   cursor: pointer;
 }
 
+.subtitle {
+  text-align: center;
+}
+
 #name:hover {
   background-color: #6c63ff;
 }
@@ -94,4 +98,29 @@
   text-align: center;
   font-size: 1rem;
   color: #6c63ff;
+}
+
+.fade-in {
+  animation: fadeInUp 0.6s ease forwards;
+  opacity: 0;
+}
+
+.fade-in:nth-child(even) {
+  animation-delay: 0.2s;
+}
+
+.fade-in:nth-child(odd) {
+  animation-delay: 0.4s;
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20deg);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(40deg);
+    opacity: 1;
+  }
 }

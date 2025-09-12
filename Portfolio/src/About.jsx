@@ -13,7 +13,7 @@ import GitHubCalendar from 'react-github-calendar';
 function About() {
 
   return (
-    <div className="about-container">
+    <div className="about-container fade-in">
       <h2>Know Who I'M</h2>
       <p>Hello there, I am Hardik Marlapudi and I'm from Blythewood, South Carolina.</p>
       <p id="firstParagraph">I am a student from the University of South Carolina at Columbia.</p>
@@ -21,14 +21,14 @@ function About() {
       <p id="thirdParagraph">Apart from coding, some activities that I love to do!</p>
 
       
-      <ol id="activities">
+      <ol id="activities-fade-in">
         <b>Playing Video Games</b><br></br>
         <b>Travelling</b><br></br>
         <b>Playing Tennis</b><br></br>
       </ol>
 
-      <h2 id="skillet">Professional Skillset</h2>
-      <div className="skill-icons">
+      <h2 id="skillet fade-in">Professional Skillset</h2>
+      <div className="skill-icons fade-in">
         <a href="https://www.html.com" target="_blank"><FaHtml5 /></a>
         <a href="https://www.css.com" target="_blank"><FaCss3Alt /></a>
         <a href="https://www.javascript.com" target="_blank"><IoLogoJavascript /></a>
@@ -41,7 +41,7 @@ function About() {
         <a href="https://www.github.com/" target="_blank"><FaGithub /></a>
       </div>
 
-      <h2 id="tools">Tools I use</h2>
+      <h2 id="tools fade-in">Tools I use</h2>
       <div className="tool-icons">
         <a href="https://www.apple.com/macos/macos-sequoia/" target="_blank"><SiMacos /></a>
         <a href="https://code.visualstudio.com/" target="_blank"><VscVscode /></a>
@@ -49,8 +49,8 @@ function About() {
         <a href="https://www.jetbrains.com/pycharm/" target="_blank"><SiPycharm /></a>
       </div>
 
-      <h2 id="days-I-code">Days I Code</h2>
-      <div className="github-calendar">
+      <h2 id="days-I-code fade-in">Days I Code</h2>
+      <div className="github-calendar fade-in">
         <GitHubCalendar
           username="HardikMarlapudi"
           blockSize={15}

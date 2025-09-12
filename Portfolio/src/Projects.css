@@ -130,3 +130,28 @@
     outline-offset: 2px;
     box-shadow: var(--shadow-hover);
 }
+
+.fade-in {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+}
+
+.fade-in:nth-child(even) {
+    animation-delay: 0.2s;
+}
+
+.fade-in:nth-child(odd) {
+    animation-delay: 0.4s;
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: transformY(40px);
+        opacity: 1;
+    }
+}

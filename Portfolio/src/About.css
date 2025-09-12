@@ -22,7 +22,7 @@
     text-align: center;
 }
 
-#activities {
+#activities-fade-in {
     text-align: center;
     margin: 3rem;
 }
@@ -76,4 +76,29 @@
     color: #a971f5;
     transform: scale(1.2);
     cursor: pointer;
+}
+
+.fade-in {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+}
+
+.fade-in:nth-child(even) {
+    animation-delay: 0.2s;
+}
+
+.fade-in:nth-child(odd) {
+    animation-delay: 0.4s;
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(20deg);
+        opacity: 0;
+    }
+
+    to {
+        transform: transformY(40deg);
+        opacity: 1;
+    }
 }
