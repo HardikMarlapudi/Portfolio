@@ -11,11 +11,11 @@ function Resume() {
     return (
         <>
         <h2 id="title" className="title fade-in">Resume</h2>
-        <a href="https://www.overleaf.com/read/wpmtzsvqjttf#f418ee" id="resume" class="resume fade-in" target="_blank">Resume</a>
-        <p id="aboutResume" class="aboutResume fade-in">If you're interested in my qualifications for IT roles, feel free to download or preview my resume below.</p>
+        <a href="https://www.overleaf.com/read/wpmtzsvqjttf#f418ee" id="resume" className="resume fade-in" target="_blank">Resume</a>
+        <p id="aboutResume" className="aboutResume fade-in">If you're interested in my qualifications for IT roles, feel free to download or preview my resume below.</p>
 
         <div className="resume-actions fade-in">
-            <a href="/Resume%20(2).pdf" download className="btn download-btn">Download Resume</a>
+            <a href="/Resume%20(2).pdf" download className="btn download-btn" id="btn-download-btn">Download Resume</a>
             <button className="btn preview-btn" onClick={() => setShowPreview(!showPreview)}>
                 {showPreview ? "Hide Preview" : "Preview Resume"}
             </button>
@@ -23,7 +23,7 @@ function Resume() {
 
         {showPreview && (
         <div className="resume-preview">
-            <iframe src="https://www.overleaf.com/read/wpmtzsvqjttf#f418ee" frameBorder="0" title="Resume Preview"></iframe>
+            <iframe src="https://www.overleaf.com/read/wpmtzsvqjttf#f418ee" frameborder="0" title="Resume Preview"></iframe>
         </div>
         )}
 

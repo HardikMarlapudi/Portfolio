@@ -68,7 +68,11 @@
     display: none;
 }
 
-.btn-preview-btn {
+#btn-download-btn {
+    text-align: center;
+}
+
+#btn-preview-btn {
     text-align: center;
 }
 
