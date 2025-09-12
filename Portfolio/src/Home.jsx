@@ -10,7 +10,7 @@ function Home() {
     return (
         <>
         <div className="intro fade-in">
-            <h1 id="title">Hi there! </h1>
+            <h1 id="title">Hi there!</h1>
             <center><img src="Portfolio/photo/Profile-pic.png" id="profilePhoto" alt="Profile Pic"></img></center>
             <p id="name">I'm Hardik Marlapudi</p>
         </div>
