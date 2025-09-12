@@ -6,8 +6,8 @@ function Projects() {
 
     return (
         <>
-        <h1 id="projectTitle" class="projectTitle fade-in">My Recent Works</h1>
-        <p id="projectIdeas" class="projectIdeas fade-in">Here are a few projects I've worked on recently.</p>
+        <h1 id="projectTitle" className="projectTitle fade-in">My Recent Works</h1>
+        <p id="projectIdeas" className="projectIdeas fade-in">Here are a few projects I've worked on recently.</p>
 
         <div className="project-card-view card fade-in">
             <a href="https://github.com/HardikMarlapudi/Calculator_React.js" target="_blank" id="calculatorProgram">Calculator Program</a>
