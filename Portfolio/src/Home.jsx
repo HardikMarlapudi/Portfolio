@@ -15,7 +15,7 @@ function Home() {
             <center><img src={profile} id="profilePhoto" alt="Profile Pic"></img></center>
             <p id="name">I'm Hardik Marlapudi</p>
         </div>
-
+        
         <div className="aboutMe fade-in">
             <h2 id="aboutMyself">LET ME INTRODUCE MYSELF</h2>
             <p id="aboutMe">I am a student at the University of South Carolina and I fell love with programming for quite a while now.</p>
