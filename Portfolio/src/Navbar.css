@@ -1,108 +1,108 @@
 /* Navbar.css */
 :root {
-    --accent: #7c3aed;
-    --accent-2: #a78bfa;
-    --link: rgba(255,255,255,.82);
-    --link-hover: #ffffff;
-    --active: #7c3aed;
-    --nav-bg: #1a1a1a;
-    --nav-border: rgba(255,255,255,.08);
+  --accent: #7c3aed;
+  --accent-2: #a78bfa;
+  --link: rgba(255,255,255,.82);
+  --link-hover: #ffffff;
+  --active: #7c3aed;
+  --nav-bg: #1a1a1a;
+  --nav-border: rgba(255,255,255,.08);
 }
 
 .navbar {
-    position: relative;
-    top: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 0.75rem 1rem;
-    background-color: var(--nav-bg);
-    border-bottom: 1px solid var(--nav-border);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    z-index: 1000;
-  }
+  position: relative;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+  background-color: var(--nav-bg);
+  border-bottom: 1px solid var(--nav-border);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  z-index: 1000;
+}
 
-  /* Hides the hamburger menu */
+/* Hides the hamburger menu */
+.hamburger {
+  display: none;
+  text-align: center;
+  background: transparent;
+  border: 0;
+  color: var(--link);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+/* Link row (desktop) */
+.nav-links {
+  display: flex;
+  text-align: center;
+  gap: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  text-align: center;
+  color: var(--link);
+  font-size: 18px;
+  font-weight: 500;
+  padding-bottom: 6px;
+  border-bottom: 2px solid transparent;
+  transition: color .2s ease, border-color .2s ease, transform .15s ease;
+}
+
+.nav-links a:hover {
+  color: var(--link-hover);
+  border-bottom-color: var(--accent-2);
+  transform: translateY(-1px);
+}
+
+/* Active route form navLink */
+.nav-links a.active {
+  color: var(--link-hover);
+  border-bottom-color: var(--active);
+}
+
+/* --- Mobile Resolution --- */
+@media (max-width: 768px) {
   .hamburger {
-    display: none;
-    text-align: center;
-    background: transparent;
-    border: 0;
-    color: var(--link);
-    font-size: 1.5rem;
-    line-height: 1;
+      display: flex;
+      cursor: pointer;
   }
 
-  /* Link row (desktop) */
   .nav-links {
-    display: flex;
-    text-align: center;
-    gap: 28px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+      position: absolute;
+      top: 56px;
+      left: 0;
+      width: 100%;
+      flex-direction: column;
+      gap: 20px;
+      background: var(--nav-bg);
+      padding: 16px 0 20px;
+      transform: translateY(-200%);
+      transition: transform .25s ease-in-out;
+      border-bottom: 1px solid var(--nav-border);
+  }
+
+  .nav-links.open {
+      transform: translateY(0);
   }
 
   .nav-links a {
-    text-decoration: none;
-    text-align: center;
-    color: var(--link);
-    font-size: 18px;
-    font-weight: 500;
-    padding-bottom: 6px;
-    border-bottom: 2px solid transparent;
-    transition: color .2s ease, border-color .2s ease, transform .15s ease;
+      font-size: 16px;
+      padding: 8px 0;
+      width: 100%;
+      text-align: center;
   }
+}
 
-  .nav-links a:hover {
-    color: var(--link-hover);
-    border-bottom-color: var(--accent-2);
-    transform: translateY(-1px);
-  }
+.navbar ul {list-style: none;}
 
-  /* Active route form navLink */
-  .nav-links a.active {
-    color: var(--link-hover);
-    border-bottom-color: var(--active);
-  }
-
-  /* --- Mobile Resolution --- */
-  @media (max-width: 768px) {
-    .hamburger {
-        display: flex;
-        cursor: pointer;
-    }
-
-    .nav-links {
-        position: absolute;
-        top: 56px;
-        left: 0;
-        width: 100%;
-        flex-direction: column;
-        gap: 20px;
-        background: var(--nav-bg);
-        padding: 16px 0 20px;
-        transform: translateY(-200%);
-        transition: transform .25s ease-in-out;
-        border-bottom: 1px solid var(--nav-border);
-    }
-
-    .nav-links.open {
-        transform: translateY(0);
-    }
-
-    .nav-links a {
-        font-size: 16px;
-        padding: 8px 0;
-        width: 100%;
-        text-align: center;
-    }
-  }
-
-  .navbar ul {list-style: none;}
-
-  .nav-links a:focus-visible {
-    outline: 2px solid var(--accent-2);
-    outline-offset: 2px;
-    border-radius: 4px;
-  }
+.nav-links a:focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 2px;
+  border-radius: 4px;
+}

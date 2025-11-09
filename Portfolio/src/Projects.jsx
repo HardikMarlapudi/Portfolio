@@ -33,9 +33,16 @@ function Projects() {
 
         <div className="project-card-view card fade-in">
         <a href="https://github.com/HardikMarlapudi/Portfolio" target="_blank" id="portfolio">Portfolio</a>
-            <p>Builded a Portfolio using React.js to introducing myself about becoming a professional dev and as a person who loves to code and learn new things as an engninnering student.
+            <p>Builded a Portfolio introducing myself about becoming a professional dev and as a person who loves to code and learn new things to grow as a developer.
             </p>
             <img width="300" height="250" alt="image" src="https://github.com/user-attachments/assets/9c8c084e-bf9f-4eb4-ad33-b5870f9ddc56" />
+        </div>
+
+        <div className="project-card-view card fade-in">
+            <a href="https://github.com/HardikMarlapudi/QuoteGenerator" target="_blank" id="portfolio">Quote Generator</a>
+            <p>Builded a Quote Generator in React.js using axios to fetch API requests to retreive a new quote just with a click of a button.
+            </p>
+            <img width="300" height="250" alt="image" src="https://github.com/user-attachments/assets/3593d5bc-4a6e-45bf-8325-440ea11d5ac0" />
         </div>
         </>
     )
