@@ -1,0 +1,19 @@
+body {
+    background-color: black;
+    background-color: transition 0.3s ease black;
+}
+
+body.light-mode {
+    background: whitesmoke;
+  
+}
+
+#toggleIcon {
+    display: inline-flexbox;
+    text-align: right;
+    cursor: pointer;
+    padding: 8px 12px;
+    border: none;
+    background: #ccc;
+    border-radius: 4px;
+}

@@ -1,6 +1,6 @@
 // src/Contact.jsx
 import React, {useState} from 'react';
-import './Contact.css';
+import '/src/css/Contact.css';
 
 function Contact() {
 
@@ -37,7 +37,7 @@ function Contact() {
     return (
         <>
         <h1 id="title" className="title fade-in">Contact</h1>
-        <p className="subtitle fade-in">Have a question or a project in mind, would you like to share? Feel free to share.</p>
+        <p className="subtitle">Have a question or a project in mind, would you like to share? Feel free to share.</p>
         <div>
             <form onSubmit={onSubmit} className="contact-form fade-in">
         <input

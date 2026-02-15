@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {FaHtml5 , FaCss3Alt, FaJsSquare, FaJava, FaReact} from "react-icons/fa";
-import resume from "/pdf/resume.pdf";
+import resume from "/pdf/Resume.pdf";
 import { IoLogoVue } from "react-icons/io5";
 import { MdOutlineSecurity } from "react-icons/md";
-import './Resume.css';
+import '/src/css/Resume.css';
 
 function Resume() {
 
@@ -35,7 +35,7 @@ function Resume() {
                 <li><FaJava/> Java</li>
                 <li><FaReact/> React.js</li>
                 <li><IoLogoVue/> Vue.js</li>
-                <li><MdOutlineSecurity /> CyberSecurity Fundamentals</li>
+                <li><MdOutlineSecurity/> CyberSecurity Fundamentals</li>
                 </div>
             </ul>
         </div>
@@ -50,7 +50,7 @@ function Resume() {
         <div className="why-me fade-in">
             <center><h3 id="whyMe">Why Me?</h3></center>
             <center>
-            <p>
+            <p id="info">
                 I'm a passionate developer with a strong foundation in React, JavaScript, and cybersecurity.
                 I love building responsive, interactive UIs and solving real-world problems through clean, sclable code.
             </p>

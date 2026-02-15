@@ -1,5 +1,5 @@
 import React from 'react';
-import './Projects.css';
+import '/src/css/Projects.css';
 
 function Projects() {
 
@@ -14,15 +14,6 @@ function Projects() {
                 This program involves conditional (if/else or switch) to handle different opertations and error handling, such as preventing division by zero.
             </p>
             <img width="300" height="250" alt="image" src="https://github.com/user-attachments/assets/7d2127c8-7b49-4d7d-ab50-1a4b57fefcc8" />
-        </div>
-
-        <div className="project-card-view card fade-in">
-        <a href="https://github.com/HardikMarlapudi/Forms" target="_blank" id="formsApplication">Forms Application</a>
-            <p>A forms application that takes the user inputs for each field and records the users details
-                as the output and displays it in the console and a brand new user can clear the details and
-                enter their new information.
-            </p>
-            <img width="300" height="250" alt="forms" src="https://github.com/user-attachments/assets/df8a66c4-d2fa-4b79-bb35-a9bc8d578413" />
         </div>
 
         <div className="project-card-view card fade-in">

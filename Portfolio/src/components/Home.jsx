@@ -1,5 +1,5 @@
 import React from 'react';
-import './Home.css';
+import '/src/css/Home.css';
 import profile from '/photo/Profile-pic.png';
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from 'react-icons/fa';

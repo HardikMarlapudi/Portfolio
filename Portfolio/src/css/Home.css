@@ -31,18 +31,18 @@ body {
 }
 
 #title {
-    font-size: 3rem;
+    font-size: 2.2rem;
     margin-bottom: 0.5rem;
 }
 
 #name {
-    font-size: 2rem;
+    font-size: 1.4rem;
     font-weight: 600;
     color: white;
 }
 
 .intro img {
-    width: 400px;
+    width: auto;
     max-width: 90%;
 }
 
@@ -56,7 +56,7 @@ body {
 }
 
 #aboutMyself {
-    font-size: 2rem;
+    font-size: 1.6rem;
     color: #a971f5;
     text-align: center;
     margin-bottom: 1rem;
@@ -108,41 +108,6 @@ body {
     .intro, .aboutMe, .border {
         padding: 3rem 2rem 1rem;
     }
-}
-
-#title {
-    font-size: 2.2rem;
-}
-
-#name {
-    font-size: 1.4rem;
-}
-
-.intro img {
-    width: 90%;
-}
-
-.aboutMe {
-    padding: 1.5rem;
-    font-size: 0.95rem;
-}
-
-#aboutMyself {
-    font-size: 1.6rem;
-}
-
-#aboutMe,
-#aboutme {
-    font-size: 1rem;
-    text-align: left;
-}
-
-.border {
-    padding: 2rem 1rem;
-}
-
-#firstBorder {
-    font-size: 1.5rem;
 }
 
 #buttons {

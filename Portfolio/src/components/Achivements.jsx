@@ -1,5 +1,5 @@
 import React from 'react';
-import './Achivements.css';
+import '/src/css/Achivements.css';
 
 function Achivements() {
 
@@ -21,13 +21,7 @@ function Achivements() {
             institution: "University of South Carolina, Columbia",
             year: "2023",
             description: "Received the SC Life Scholarship (Superlative Award) for my academic excellence and dedication to my studies. This recognition reflects my commitment to academic success and my ability to excel in my field of study.",
-        },
-        {
-            title: "FrontEnd Mentor Challenge Winner",
-            institution: "University of South Carolina",
-            year: "2024-2025",
-            description: "Received the FrontEnd Mentor Challenge Winner for my academic excellence and dedication to my studies. This recognition reflects my commitment to academic success and my ability to excel in my field of study.",
-        },
+        }
     ];
 
     return (

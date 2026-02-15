@@ -17,6 +17,7 @@
     font-size: 15px;
     text-align: center;
     font-weight: bold;
+    color: #6c63ff;
 }
 
 .resume-section {
@@ -39,21 +40,33 @@
 
 .resume-actions {
     display: flex;
+    justify-content: center;
     gap: 1rem;
     margin-bottom: 2rem;
 }
 
 #skills {
     text-align: center;
+    color:  #a855f7;
 }
 
 #certifications {
     font-size: 20px;
     text-align: center;
+    color:  #a855f7;
 }
 
 #certificationList {
     text-align: center;
+    color: #857ff6;
+}
+
+#whyMe {
+    color: #a855f7;
+}
+
+#info {
+    color: #857ff6;
 }
 
 .btn-preview-btn {
@@ -77,10 +90,6 @@
 
 .btn-download-btn:hover {
     background-color:#9333ea;
-}
-
-.resume-actions {
-    justify-content: center;
 }
 
 .btn {

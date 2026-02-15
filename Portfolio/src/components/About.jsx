@@ -1,4 +1,4 @@
-import './About.css';
+import '/src/css/About.css';
 import { FaHtml5 } from "react-icons/fa6";
 import { FaCss3Alt, FaReact, FaJava, FaGithub } from "react-icons/fa";
 import { IoLogoJavascript, IoLogoVue } from "react-icons/io5";
@@ -14,7 +14,7 @@ function About() {
 
   return (
     <div className="about-container fade-in">
-      <h2>Know Who I'M</h2>
+      <h2>About Me: </h2>
       <p>Hello there, I am Hardik Marlapudi and I'm from Blythewood, South Carolina.</p>
       <p id="firstParagraph">I am a student from the University of South Carolina at Columbia.</p>
       <p id="secondParagraph">I am majoring in Computer Information Systems and concentrating in Cybersecurity.</p>
