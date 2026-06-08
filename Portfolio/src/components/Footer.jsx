@@ -3,7 +3,7 @@ import { BiLogoGmail } from "react-icons/bi";
 import { FaLinkedin } from 'react-icons/fa';
 import { FaGithub } from 'react-icons/fa';
 import { FaInstagram } from 'react-icons/fa';
-import './Footer.css';
+import '../css/Footer.css';
 
 function Footer() {
 

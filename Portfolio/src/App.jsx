@@ -16,7 +16,7 @@ function App() {
     <Navbar />
     <Toggle />
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Home/>} />
       <Route path="/about" element={<About />} />
       <Route path="/projects" className="cta-button" element={<Projects />}>View My Work</Route>
       <Route path="/resume" className="cta-button" element={<Resume />}></Route>

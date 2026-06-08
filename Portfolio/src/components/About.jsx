@@ -1,29 +1,33 @@
-import '/src/css/About.css';
 import { FaHtml5 } from "react-icons/fa6";
 import { FaCss3Alt, FaReact, FaJava, FaGithub } from "react-icons/fa";
 import { IoLogoJavascript, IoLogoVue } from "react-icons/io5";
 import { DiNodejs, DiMongodb } from "react-icons/di";
 import { FaGitAlt } from "react-icons/fa6";
-import { SiMacos} from "react-icons/si";
+import { SiMacos } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
 import { DiEclipse } from "react-icons/di";
 import { SiPycharm } from "react-icons/si";
 import GitHubCalendar from 'react-github-calendar';
+import '/src/css/About.css';
 
 function About() {
 
   return (
-    <div className="about-container fade-in">
+    <div className="about-container">
       <h2>About Me: </h2>
-      <p>Hello there, I am Hardik Marlapudi and I'm from Blythewood, South Carolina.</p>
-      <p id="firstParagraph">I am a student from the University of South Carolina at Columbia.</p>
-      <p id="secondParagraph">I am majoring in Computer Information Systems and concentrating in Cybersecurity.</p>
-      <p id="thirdParagraph">Apart from coding, some activities that I love to do!</p>
 
+
+      <p>Hello! My name is Hardik Marlapudi, and I am a Computer Information Systems student at the Uniersity of South Carolina with a minor in Business Info Management.</p>
+
+      <p id="firstParagraph">I am passionate about software development, cybersecurity, and building practical technology solutions. Through my coursework and personal projects, I have gaind experience with Jaa, Javascript, React, HTML, CSS, SQL, and web development.</p>
+
+      <p id="secondParagraph">My goal is to continue developing my technical skills while pursuing opportunities in sofware development, cybersecurity, quality assurnace, and IT consulting.</p>
+
+      <p id="thirdParagraph">When I'm not coding, I enjoy: </p>
       
       <ol id="activities-fade-in">
         <b>Playing Video Games</b><br></br>
-        <b>Travelling</b><br></br>
+        <b>Traveling</b><br></br>
         <b>Playing Tennis</b><br></br>
       </ol>
 

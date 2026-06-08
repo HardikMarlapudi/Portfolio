@@ -1,19 +1,19 @@
-body {
-    background-color: black;
-    background-color: transition 0.3s ease black;
+body.dark-mode {
+    background-color: #333;
+    transition: background-color 0.3s ease-in-out;
 }
 
 body.light-mode {
-    background: whitesmoke;
-  
+    background-color: rgb(243, 241, 241);
+    transition: background-color 0.3s ease-in-out;
+
 }
 
 #toggleIcon {
     display: inline-flexbox;
-    text-align: right;
-    cursor: pointer;
     padding: 8px 12px;
     border: none;
     background: #ccc;
     border-radius: 4px;
+    cursor: pointer;
 }

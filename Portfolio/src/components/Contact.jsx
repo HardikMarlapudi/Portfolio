@@ -1,88 +1,137 @@
-// src/Contact.jsx
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import '/src/css/Contact.css';
 
 function Contact() {
+  const [result, setResult] = useState('');
 
-    const [result, setResult] = useState('');
-    const [formData, setFormData] = useState ({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  });
+
+  const handleChange = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
     });
+  };
 
-    const onSubmit = async (event) => {
-        event.preventDefault();
-        setResult("Sending...");
-        const formData = new FormData(event.target);
-        
-        formData.append("access_key", "7afe7930-8084-4fdd-9fe0-678ee3fdb2db");
+  const onSubmit = async (event) => {
+    event.preventDefault();
 
-        const response = await fetch("https://api.web3forms.com/submit", {
-            method: "POST",
-            body: formData
-        });
+    setResult('Sending...');
 
-        const data = await response.json();
+    const submitData = new FormData(event.target);
 
-        if(data.success) {
-            setResult("Thank you, your form has been submitted successfully.");
-            event.target.reset();
-        } else {
-            console.log("Error", data);
-            setResult("Sorry, something went wrong while submitting the form.");
+    submitData.append(
+      'access_key',
+      '7afe7930-8084-4fdd-9fe0-678ee3fdb2db'
+    );
+
+    try {
+      const response = await fetch(
+        'https://api.web3forms.com/submit',
+        {
+          method: 'POST',
+          body: submitData,
         }
+      );
+
+      const data = await response.json();
+
+      if (data.success) {
+        setResult(
+          'Thank you, your form has been submitted successfully.'
+        );
+
+        event.target.reset();
+
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: '',
+        });
+      } else {
+        console.error('Error:', data);
+
+        setResult(
+          'Sorry, something went wrong while submitting the form.'
+        );
+      }
+    } catch (error) {
+      console.error('Error:', error);
+
+      setResult(
+        'Sorry, something went wrong while submitting the form.'
+      );
     }
-    return (
-        <>
-        <h1 id="title" className="title fade-in">Contact</h1>
-        <p className="subtitle">Have a question or a project in mind, would you like to share? Feel free to share.</p>
-        <div>
-            <form onSubmit={onSubmit} className="contact-form fade-in">
-        <input
+  };
+
+  return (
+    <>
+      <h1 id="title" className="title fade-in">
+        Contact
+      </h1>
+
+      <p className="subtitle">
+        Have a question or a project in mind, would you like to share?
+        Feel free to share.
+      </p>
+
+      <div>
+        <form
+          onSubmit={onSubmit}
+          className="contact-form fade-in"
+        >
+          <input
             id="name"
             type="text"
             name="name"
-            placeholder="Name: "
+            placeholder="Name:"
             value={formData.name}
-            onChange={setFormData}
+            onChange={handleChange}
             required
-        />
-        <input
+          />
+
+          <input
             id="email"
-            type="text"
+            type="email"
             name="email"
             placeholder="Email:"
             value={formData.email}
-            onChange={setFormData}
+            onChange={handleChange}
             required
-        />
-        <input
+          />
+
+          <input
             id="subject"
             type="text"
             name="subject"
-            placeholder="Subject: "
+            placeholder="Subject:"
             value={formData.subject}
-            onChange={setFormData}
+            onChange={handleChange}
             required
-        />
-        <textarea
+          />
+
+          <textarea
             id="message"
-            type="text"
             name="message"
             placeholder="Send a message..."
             value={formData.message}
-            onChange={setFormData}
+            onChange={handleChange}
             required
-        />
-            <button type="submit">Send</button>
+          />
+
+          <button type="submit">Send</button>
         </form>
 
-                <p id="result">{result}</p>
-            </div>
-        </>
-        );
-    }
+        <p id="result">{result}</p>
+      </div>
+    </>
+  );
+}
 
 export default Contact;

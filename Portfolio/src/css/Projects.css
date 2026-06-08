@@ -120,6 +120,10 @@
     padding: 1rem 1.25rem;
 }
 
+.project-card-view card fade-in {
+    color: white;
+}
+
 @media (min-width: 640px) {
     .project-card-view {
         padding: 1.5rem 2rem;

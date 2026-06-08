@@ -35,6 +35,13 @@ function Projects() {
             </p>
             <img width="300" height="250" alt="image" src="https://github.com/user-attachments/assets/3593d5bc-4a6e-45bf-8325-440ea11d5ac0" />
         </div>
+
+        <div className="project-card-view card fade-in">
+            <a href="https://github.com/HardikMarlapudi/Pokedex" target="_blank" id="pokedex">Pokedex</a>
+            <p>A Pokedex application that displays information about various Pokémon characters. Users can search for specific Pokémon by name or view a list of all available Pokémon.
+            </p>
+            <img width="300" height="250" alt="image" src="https://github.com/user-attachments/assets/b1f57e3c-1d25-40f4-9061-7894589df690" />
+        </div>
         </>
     )
 }

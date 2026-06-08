@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import '/src/css/Toggle.css';
 
     const Toggle = () => {
-        const [toggle, setToggle] = useState(false);
+        const [toggle, setToggle] = useState();
 
         const toggleHandler = () => {
             setToggle((prev) => !prev);
@@ -21,7 +21,7 @@ import '/src/css/Toggle.css';
     return (
     <div>
         <button id="toggleIcon" onClick={toggleHandler}>
-        {toggle ? 'Dark Mode' : 'Light Mode'}
+        {toggle ? '☾' : '☀'}
         </button>
     </div>
         );
