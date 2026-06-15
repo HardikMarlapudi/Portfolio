@@ -1,127 +1,82 @@
-import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom/vitest';
-import { describe, test, expect, vi, beforeEach } from 'vitest';
-import Layout from '../../components/Layout';
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom/vitest";
+import { describe, test, expect, vi } from "vitest";
+import { MemoryRouter, Routes, Route } from "react-router-dom";
+import Layout from "../../components/Layout";
 
 // Mock Navbar
-vi.mock('../../components/Navbar', () => ({
-  default: () => <div data-testid="navbar">Navbar</div>,
+vi.mock("../../components/Navbar", () => ({
+  default: () => <div>Navbar Component</div>,
 }));
 
-// Mock react-router-dom
-vi.mock('react-router-dom', () => ({
-  useLocation: vi.fn(),
-  Outlet: () => (
-    <div data-testid="outlet">
-      Outlet Content
-    </div>
-  ),
+// Mock Toggle
+vi.mock("../../components/Toggle", () => ({
+  default: () => <div>Toggle Component</div>,
 }));
 
-import { useLocation } from 'react-router-dom';
-
-describe('Layout Component', () => {
-  beforeEach(() => {
-    window.scrollTo = vi.fn();
-  });
-
-  test('renders navbar', () => {
-    useLocation.mockReturnValue({
-      pathname: '/home',
-    });
-
-    render(<Layout />);
+describe("Layout Component", () => {
+  test("renders Navbar component", () => {
+    render(
+      <MemoryRouter>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route index element={<div>Home Page</div>} />
+          </Route>
+        </Routes>
+      </MemoryRouter>
+    );
 
     expect(
-      screen.getByTestId('navbar')
+      screen.getByText("Navbar Component")
     ).toBeInTheDocument();
   });
 
-  test('renders outlet content', () => {
-    useLocation.mockReturnValue({
-      pathname: '/home',
-    });
-
-    render(<Layout />);
+  test("renders Toggle component", () => {
+    render(
+      <MemoryRouter>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route index element={<div>Home Page</div>} />
+          </Route>
+        </Routes>
+      </MemoryRouter>
+    );
 
     expect(
-      screen.getByTestId('outlet')
+      screen.getByText("Toggle Component")
     ).toBeInTheDocument();
   });
 
-  test('sets title for home page', () => {
-    useLocation.mockReturnValue({
-      pathname: '/home',
-    });
+  test("renders outlet content", () => {
+    render(
+      <MemoryRouter>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route index element={<div>Home Page</div>} />
+          </Route>
+        </Routes>
+      </MemoryRouter>
+    );
 
-    render(<Layout />);
-
-    expect(document.title).toBe('Home');
+    expect(
+      screen.getByText("Home Page")
+    ).toBeInTheDocument();
   });
 
-  test('sets title for about page', () => {
-    useLocation.mockReturnValue({
-      pathname: '/about',
-    });
+  test("renders main element", () => {
+    render(
+      <MemoryRouter>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route index element={<div>Home Page</div>} />
+          </Route>
+        </Routes>
+      </MemoryRouter>
+    );
 
-    render(<Layout />);
-
-    expect(document.title).toBe('About');
-  });
-
-  test('sets title for projects page', () => {
-    useLocation.mockReturnValue({
-      pathname: '/projects',
-    });
-
-    render(<Layout />);
-
-    expect(document.title).toBe('Projects');
-  });
-
-  test('sets title for contact page', () => {
-    useLocation.mockReturnValue({
-      pathname: '/contact',
-    });
-
-    render(<Layout />);
-
-    expect(document.title).toBe('Contact');
-  });
-
-  test('sets default title for unknown route', () => {
-    useLocation.mockReturnValue({
-      pathname: '/unknown',
-    });
-
-    render(<Layout />);
-
-    expect(document.title).toBe('Portfolio');
-  });
-
-  test('calls window.scrollTo', () => {
-    useLocation.mockReturnValue({
-      pathname: '/home',
-    });
-
-    render(<Layout />);
-
-    expect(window.scrollTo).toHaveBeenCalledWith({
-      top: 0,
-      behavior: 'smooth',
-    });
-  });
-
-  test('renders main container', () => {
-    useLocation.mockReturnValue({
-      pathname: '/home',
-    });
-
-    const { container } = render(<Layout />);
-
-    const main =
-      container.querySelector('main.container');
-
-    expect(main).toBeInTheDocument();
+    expect(
+      screen.getByRole("main")
+    ).toBeInTheDocument();
   });
 });

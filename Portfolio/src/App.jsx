@@ -1,33 +1,32 @@
-import React from 'react';
-import {Routes, Route, Navigate } from 'react-router-dom';
-import Navbar from './components/Navbar.jsx';
-import Toggle from '/src/components/Toggle.jsx';
-import Home from './components/Home.jsx';
-import About from './components/About.jsx';
-import Projects from './components/Projects.jsx';
-import Resume from './components/Resume.jsx';
-import Achivements from './components/Achivements.jsx';
-import Contact from './components/Contact.jsx';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+
+import Navbar from "./components/Navbar.jsx";
+import Toggle from "./components/toggle.jsx";
+import Home from "./components/Home.jsx";
+import About from "./components/About.jsx";
+import Projects from "./components/Projects.jsx";
+import Resume from "./components/Resume.jsx";
+import Achievements from "./components/Achievements.jsx";
+import Contact from "./components/Contact.jsx";
 
 function App() {
-    
-  return (
-  <>
-    <Navbar />
-    <Toggle />
-    <Routes>
-      <Route path="/" element={<Home/>} />
-      <Route path="/about" element={<About />} />
-      <Route path="/projects" className="cta-button" element={<Projects />}>View My Work</Route>
-      <Route path="/resume" className="cta-button" element={<Resume />}></Route>
-      <Route path="/achievements" className="cta-button" element={<Achivements />}></Route>
-      <Route path="/contact" element={<Contact />} />
-      <Route path="*" element={<Navigate to="/" />} />
-    </Routes>
-  </>
-  
-  )
 
-};
+  return (
+    <>
+      <Navbar />
+      <Toggle />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/resume" element={<Resume />} />
+        <Route path="/achievements" element={<Achievements />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </>
+  );
+}
 
 export default App;

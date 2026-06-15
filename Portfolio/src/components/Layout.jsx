@@ -1,31 +1,28 @@
-import React, {useEffect} from "react";
-import {Outlet, useLocation} from 'react-router-dom';
-import Navbar from './Navbar';
+import React, { useEffect } from "react";
+import { Outlet, useLocation } from "react-router-dom";
+import Navbar from "./Navbar";
+import Toggle from "./toggle";
 
 function Layout() {
+  const { pathname } = useLocation();
 
-    const {pathname} = useLocation();
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, [pathname]);
 
-    useEffect (() => {
-        const titles = {
-            "/home": "Home",
-            "/about": "About",
-            "/projects": "Projects",
-            "/contact": "Contact",
-        };
-        document.title = titles[pathname] || "Portfolio";
-        window.scrollTo({top: 0, behavior: 'smooth'});
-        }, [pathname]);
-    
+  return (
+    <>
+      <Navbar />
+      <Toggle />
 
-    return (
-        <>
-            <Navbar />
-            <main className="container">
-            <Outlet />
-            </main>
-        </>
-    );
+      <main>
+        <Outlet />
+      </main>
+    </>
+  );
 }
 
 export default Layout;

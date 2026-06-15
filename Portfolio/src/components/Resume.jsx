@@ -1,63 +1,142 @@
-import React, {useState} from 'react';
-import {FaHtml5 , FaCss3Alt, FaJsSquare, FaJava, FaReact} from "react-icons/fa";
-import resume from "/pdf/Resume.pdf";
+import React, { useState } from "react";
+import {
+  FaHtml5,
+  FaCss3Alt,
+  FaJsSquare,
+  FaJava,
+  FaReact,
+} from "react-icons/fa";
+
 import { IoLogoVue } from "react-icons/io5";
 import { MdOutlineSecurity } from "react-icons/md";
-import '/src/css/Resume.css';
+
+import resume from "/pdf/Resume.pdf";
 
 function Resume() {
+  const [showPreview, setShowPreview] = useState(false);
 
-    const [showPreview, setShowPreview] = useState(false);
+  const skills = [
+    {
+      icon: <FaHtml5 />,
+      name: "HTML5",
+    },
+    {
+      icon: <FaCss3Alt />,
+      name: "CSS3",
+    },
+    {
+      icon: <FaJsSquare />,
+      name: "JavaScript",
+    },
+    {
+      icon: <FaJava />,
+      name: "Java",
+    },
+    {
+      icon: <FaReact />,
+      name: "React",
+    },
+    {
+      icon: <IoLogoVue />,
+      name: "Vue.js",
+    },
+    {
+      icon: <MdOutlineSecurity />,
+      name: "Cybersecurity",
+    },
+  ];
 
-    return (
-        <>
-        <h2 id="title" className="title fade-in">Resume</h2>
-        <p id="aboutResume" className="aboutResume fade-in">If you're interested in my qualifications for IT roles, feel free to download or preview my resume below.</p>
+  return (
+    <section className="min-h-screen bg-white text-black dark:bg-slate-950 dark:text-white px-6 py-12 transition duration-500">
+      <div className="max-w-6xl mx-auto">
 
-        <div className="resume-actions fade-in">
-            <button className="btn-download-btn" onClick={() => setShowPreview(!showPreview)}>
-                {showPreview ? "Hide Preview" : "Show Preview"}
-            </button>
+        <h1 className="text-5xl font-bold text-center mb-6">
+          Resume
+        </h1>
+
+        <p className="text-center text-black-300 max-w-3xl mx-auto mb-10">
+          If you're interested in my qualifications for IT roles,
+          feel free to preview or download my resume below.
+        </p>
+
+        <div className="flex justify-center gap-4 mb-12">
+
+          <button
+            onClick={() => setShowPreview(!showPreview)}
+            className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg font-semibold transition cursor-pointer"
+          >
+            {showPreview ? "Hide Preview" : "Show Preview"}
+          </button>
+
+          <a
+            href={resume}
+            download
+            className="bg-green-600 hover:bg-green-700 px-6 py-3 rounded-lg font-semibold transition cursor-pointer"
+          >
+            Download Resume
+          </a>
+
         </div>
 
         {showPreview && (
-        <div className="resume-preview">
-            <iframe src={resume} title="Resume Preview"></iframe>
-        </div>
+          <div className="bg-slate-900 rounded-2xl overflow-hidden shadow-lg mb-16">
+            <iframe
+              src={resume}
+              title="Resume Preview"
+              className="w-full h-[900px]"
+            />
+          </div>
         )}
 
-        <div className="skills fade-in">
-            <h3 id="skills">Skills</h3>
-            <ul>
-                <div className="icons">
-                <li><FaHtml5 /><FaCss3Alt/> HTML/CSS</li>
-                <li><FaJsSquare/> JavaScript</li>
-                <li><FaJava/> Java</li>
-                <li><FaReact/> React.js</li>
-                <li><IoLogoVue/> Vue.js</li>
-                <li><MdOutlineSecurity/> CyberSecurity Fundamentals</li>
+        <div className="mt-12 dark:bg-slate-900 rounded-xl p-8 mb-12 shadow-lg">
+          <h2 className="text-4xl font-bold text-center mb-10">
+            Technical Skills
+          </h2>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 cursor-pointer">
+            {skills.map((skill) => (
+              <div
+                key={skill.name}
+                className="flex flex-col items-center justify-center p-8 bg-white-500 rounded-xl hover:bg-slate-500 hover:text-blue-400 transition"
+              >
+                <div className="text-5xl mb-4">
+                  {skill.icon}
                 </div>
-            </ul>
+
+                <p>{skill.name}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="certifications fade-in">
-            <h2 id="certifications">Certifications</h2>
-            <ul id="certificationList">
-                <p>Google Cybersecurity Certificate (2025)</p>
-                <p>Frontend Mentor Challenges (React)</p>
-            </ul>
+        <div className="mt-12 dark:bg-slate-900 rounded-xl p-8 mb-12 shadow-lg">
+          <h2 className="text-4xl font-bold text-center mb-8">
+            Certifications
+          </h2>
+
+          <ul className="space-y-4 text-lg text-center">
+            <li>Google Cybersecurity Professional Certificate</li>
+            <li>Frontend Mentor React Challenges</li>
+          </ul>
         </div>
-        <div className="why-me fade-in">
-            <center><h3 id="whyMe">Why Me?</h3></center>
-            <center>
-            <p id="info">
-                I'm a passionate developer with a strong foundation in React, JavaScript, and cybersecurity.
-                I love building responsive, interactive UIs and solving real-world problems through clean, sclable code.
-            </p>
-            </center>
+
+        <div className="mt-12 dark:bg-slate-900 rounded-xl p-8 mb-12 shadow-lg">
+          <h2 className="text-4xl font-bold text-center mb-8">
+            Why Me?
+          </h2>
+
+          <p className="text-lg leading-8 text-center max-w-4xl mx-auto">
+            I'm a passionate developer with a strong foundation in
+            React, JavaScript, Java, and cybersecurity. I enjoy
+            building responsive applications, solving technical
+            challenges, and continuously learning new technologies
+            that help me grow as a software developer.
+          </p>
         </div>
-        </>
-    )
+
+      </div>
+    </section>
+  );
 }
 
 export default Resume;

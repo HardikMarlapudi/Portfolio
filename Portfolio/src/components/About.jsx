@@ -7,54 +7,81 @@ import { SiMacos } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
 import { DiEclipse } from "react-icons/di";
 import { SiPycharm } from "react-icons/si";
-import GitHubCalendar from 'react-github-calendar';
-import '/src/css/About.css';
+import GitHubCalendar from "react-github-calendar";
 
 function About() {
 
   return (
-    <div className="about-container">
-      <h2>About Me: </h2>
+    <>
+    <section className="min-h-screen bg-white text-black dark:bg-slate-950 dark:text-white px-6 py-12 transition duration-500">
+    <div className="mt-16 bg-gray-100 dark:bg-slate-900 rounded-xl p-8 shadow-lg">
+      <h1 className="text-5xl text-center font-bold mb-12">
+        About Me:
+      </h1>
 
+      <div className="mt-16 bg-gray-100 dark:bg-slate-900 rounded-xl p-8 shadow-lg">
+      <p className="text-lg leading-8 mb-6 text-center">
+        Hello! My name is Hardik Marlapudi, and I am a Computer Information Systems student at the Uniersity of South Carolina with a minor in Business Info Management.
+      </p>
 
-      <p>Hello! My name is Hardik Marlapudi, and I am a Computer Information Systems student at the Uniersity of South Carolina with a minor in Business Info Management.</p>
+      <p className="text-lg leading-8 mb-6 text-center">
+        I am passionate about software development, cybersecurity, and building practical technology solutions. Through my coursework and personal projects, I have gaind experience with Java, JavaScript, React.js, HTML, CSS, Python, and mySQL.
+      </p>
 
-      <p id="firstParagraph">I am passionate about software development, cybersecurity, and building practical technology solutions. Through my coursework and personal projects, I have gaind experience with Jaa, Javascript, React, HTML, CSS, SQL, and web development.</p>
+      <p className="text-lg leading-8 mb-6 text-center">
+        My goal is to continue developing my technical skills while pursuing opportunities in sofware development, cybersecurity, quality assurnace, and IT consulting.
+      </p>
 
-      <p id="secondParagraph">My goal is to continue developing my technical skills while pursuing opportunities in sofware development, cybersecurity, quality assurnace, and IT consulting.</p>
-
-      <p id="thirdParagraph">When I'm not coding, I enjoy: </p>
+      <h2 className="text-2xl font-bold text-blue-400 mt-8 mb-4 text-center">
+        When I'm not coding, I enjoy: 
+      </h2>
       
-      <ol id="activities-fade-in">
+      <ul className="space-y-3 text-lg text-center">
         <b>Playing Video Games</b><br></br>
         <b>Traveling</b><br></br>
         <b>Playing Tennis</b><br></br>
-      </ol>
+      </ul>
 
-      <h2 id="skillet fade-in">Professional Skillset</h2>
-      <div className="skill-icons fade-in">
-        <a href="https://www.html.com" target="_blank"><FaHtml5 /></a>
-        <a href="https://www.css.com" target="_blank"><FaCss3Alt /></a>
-        <a href="https://www.javascript.com" target="_blank"><IoLogoJavascript /></a>
-        <a href="https://docs.oracle.com/en/java/javase/17/docs/api/index.html" target="_blank"><FaJava /></a>
-        <a href="https://react.dev/" target="_blank"><FaReact /></a>
-        <a href="https://vuejs.org/" target="_blank"><IoLogoVue /></a>
-        <a href="https://nodejs.org/en" target="_blank"><DiNodejs /></a>
-        <a href="https://www.mongodb.com/" target="_blank"><DiMongodb /></a>
-        <a href="https://git-scm.com/" target="_blank"><FaGitAlt /></a>
-        <a href="https://www.github.com/" target="_blank"><FaGithub /></a>
+    <div className="mt-16 rounded-xl p-8 shadow-lg">
+      <h2 className="text-4xl font-bold text-center mb-10">
+        Professional Skillset
+      </h2>
+
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 cursor-pointer">
+        <SkillCard icon={<FaHtml5 />} />
+        <SkillCard icon={<FaCss3Alt />} />
+        <SkillCard icon={<IoLogoJavascript />} />
+        <SkillCard icon={<FaJava />} />
+        <SkillCard icon={<FaReact />} />
+        <SkillCard icon={<IoLogoVue />} />
+        <SkillCard icon={<DiNodejs />} />
+        <SkillCard icon={<DiMongodb />} />
+        <SkillCard icon={<FaGitAlt />} />
+        <SkillCard icon={<FaGithub />} />
       </div>
+    </div>
 
-      <h2 id="tools fade-in">Tools I use</h2>
-      <div className="tool-icons">
-        <a href="https://www.apple.com/macos/macos-sequoia/" target="_blank"><SiMacos /></a>
-        <a href="https://code.visualstudio.com/" target="_blank"><VscVscode /></a>
-        <a href="https://www.eclipse.org/" target="_blank"><DiEclipse /></a>
-        <a href="https://www.jetbrains.com/pycharm/" target="_blank"><SiPycharm /></a>
-      </div>
+    <div className="mt-20 rounded-xl p-8 shadow-lg">
+        <h2 className="text-4xl font-bold text-center mb-10">
+            Tools I use
+        </h2>
 
-      <h2 id="days-I-code fade-in">Days I Code</h2>
-      <div className="github-calendar fade-in">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 cursor-pointer">
+            <SkillCard icon={<SiMacos />} />
+            <SkillCard icon={<VscVscode />} />
+            <SkillCard icon={<DiEclipse />} />
+            <SkillCard icon={<SiPycharm />} />
+        </div>
+    </div>
+
+    <div className="mt-20">
+      <h2 className="text-4xl font-bold text-center mb-10">
+          Github Activity
+      </h2>
+    </div>
+
+    <div className="mt-16 bg-gray-100 dark:bg-slate-900 rounded-xl p-8 shadow-lg">
+      <div className="w-full flex justify-center">
         <GitHubCalendar
           username="HardikMarlapudi"
           blockSize={15}
@@ -64,7 +91,22 @@ function About() {
         />
       </div>
     </div>
+    </div>
+  </div>
+</section>
+</>
   );
+}
+
+const SkillCard = ({icon}) => {
+  return (
+    <div className="flex flex-col items-center justify-center p-6 bg-white-100 rounded-xl hover:bg-slate-700 transition duration-300">
+      <div className="text-4xl mb-4">
+        {icon}
+      </div>
+    </div>
+
+  )
 }
 
 export default About;

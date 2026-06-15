@@ -1,30 +1,25 @@
-import React, {useState, useEffect} from 'react';
-import '/src/css/Toggle.css';
+import React, { useState, useEffect } from "react";
 
-    const Toggle = () => {
-        const [toggle, setToggle] = useState();
+function Toggle() {
+  const [darkMode, setdarkMode] = useState(true);
 
-        const toggleHandler = () => {
-            setToggle((prev) => !prev);
-        };
+  useEffect(() => {
 
-        useEffect(() => {
-            if (toggle) {
-                document.body.classList.add('light-mode');
-                document.body.classList.remove('dark-mode');
-            } else {
-                document.body.classList.add('dark-mode');
-                document.body.classList.remove('light-mode');
-            }
-        }, [toggle])
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [darkMode]);
 
-    return (
-    <div>
-        <button id="toggleIcon" onClick={toggleHandler}>
-        {toggle ? '☾' : '☀'}
-        </button>
-    </div>
-        );
-    };
+  return (
+    <button
+      onClick={() => setdarkMode(!darkMode)}
+      className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-blue-600 text-white text-2xl shadow-lg hover:scale-110 transition cursor-pointer"
+    >
+      {darkMode ? "☀️" : "🌙"}
+    </button>
+  );
+}
 
 export default Toggle;

@@ -1,101 +1,143 @@
-import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom/vitest';
-import { describe, test, expect, vi } from 'vitest';
-import About from '../../components/About';
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom/vitest";
+import { describe, test, expect, vi } from "vitest";
+import About from "../../components/About";
 
 // Mock GitHub Calendar
-vi.mock('react-github-calendar', () => ({
-  default: () => <div data-testid="github-calendar">GitHub Calendar</div>,
+vi.mock("react-github-calendar", () => ({
+  default: () => <div>GitHub Calendar Mock</div>,
 }));
 
-describe('About Component', () => {
-  test('renders About Me heading', () => {
-    render(<About />);
-
-    expect(screen.getByText('About Me:')).toBeInTheDocument();
-  });
-
-  test('renders introduction paragraph', () => {
+describe("About Component", () => {
+  test("renders About Me heading", () => {
     render(<About />);
 
     expect(
-      screen.getByText(/Computer Information Systems student/i)
+      screen.getByRole("heading", {
+        name: /about me/i,
+      })
     ).toBeInTheDocument();
   });
 
-  test('renders career goals paragraph', () => {
+  test("renders introduction paragraph", () => {
     render(<About />);
 
     expect(
-      screen.getByText(/software development, cybersecurity/i)
+      screen.getByText(
+        /computer information systems student/i
+      )
     ).toBeInTheDocument();
   });
 
-  test('renders hobbies section', () => {
-    render(<About />);
-
-    expect(screen.getByText('Playing Video Games')).toBeInTheDocument();
-    expect(screen.getByText('Traveling')).toBeInTheDocument();
-    expect(screen.getByText('Playing Tennis')).toBeInTheDocument();
-  });
-
-  test('renders Professional Skillset heading', () => {
+  test("renders technology paragraph", () => {
     render(<About />);
 
     expect(
-      screen.getByText('Professional Skillset')
+      screen.getByText(
+        /software development, cybersecurity/i
+      )
     ).toBeInTheDocument();
   });
 
-  test('renders Tools I Use heading', () => {
+  test("renders career goal paragraph", () => {
     render(<About />);
 
     expect(
-      screen.getByText('Tools I use')
+      screen.getByText(
+        /continue developing my technical skills/i
+      )
     ).toBeInTheDocument();
   });
 
-  test('renders Days I Code heading', () => {
+  test("renders hobbies heading", () => {
     render(<About />);
 
     expect(
-      screen.getByText('Days I Code')
+      screen.getByText(/when i'm not coding/i)
     ).toBeInTheDocument();
   });
 
-  test('renders GitHub calendar component', () => {
+  test("renders hobbies", () => {
     render(<About />);
 
     expect(
-      screen.getByTestId('github-calendar')
+      screen.getByText(/playing video games/i)
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByText(/traveling/i)
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByText(/playing tennis/i)
     ).toBeInTheDocument();
   });
 
-  test('renders all technology links', () => {
+  test("renders Professional Skillset section", () => {
     render(<About />);
 
-    const links = screen.getAllByRole('link');
-
-    expect(links.length).toBeGreaterThanOrEqual(14);
+    expect(
+      screen.getByRole("heading", {
+        name: /professional skillset/i,
+      })
+    ).toBeInTheDocument();
   });
 
-  test('contains React documentation link', () => {
+  test("renders Tools I Use section", () => {
     render(<About />);
 
-    const reactLink = screen
-      .getAllByRole('link')
-      .find(link => link.href.includes('react.dev'));
-
-    expect(reactLink).toBeDefined();
+    expect(
+      screen.getByRole("heading", {
+        name: /tools i use/i,
+      })
+    ).toBeInTheDocument();
   });
 
-  test('contains GitHub link', () => {
+  test("renders Github Activity section", () => {
     render(<About />);
 
-    const githubLink = screen
-      .getAllByRole('link')
-      .find(link => link.href.includes('github.com'));
+    expect(
+      screen.getByRole("heading", {
+        name: /github activity/i,
+      })
+    ).toBeInTheDocument();
+  });
 
-    expect(githubLink).toBeDefined();
+  test("renders GitHub calendar", () => {
+    render(<About />);
+
+    expect(
+      screen.getByText("GitHub Calendar Mock")
+    ).toBeInTheDocument();
+  });
+
+  test("renders all major sections", () => {
+    render(<About />);
+
+    expect(
+      screen.getByText(/about me/i)
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByText(/professional skillset/i)
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByText(/tools i use/i)
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByText(/github activity/i)
+    ).toBeInTheDocument();
+  });
+
+  test("renders skill cards", () => {
+    const { container } = render(<About />);
+
+    const cards =
+      container.querySelectorAll(".rounded-xl");
+
+    expect(cards.length).toBeGreaterThan(10);
   });
 });

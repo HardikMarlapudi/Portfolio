@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '/src/css/Contact.css';
 
 function Contact() {
   const [result, setResult] = useState('');
@@ -72,19 +71,20 @@ function Contact() {
 
   return (
     <>
-      <h1 id="title" className="title fade-in">
-        Contact
+    <section className="min-h-screen bg-white text-black dark:bg-slate-950 dark:text-white px-6 py-12 transition duration-500">
+      <div className="max-w-3xl mx-auto">
+      <h1 className="text-5xl font-bold text-center mb-16">
+        Contact Me
       </h1>
 
-      <p className="subtitle">
-        Have a question or a project in mind, would you like to share?
-        Feel free to share.
+      <p className="text-center text-black-300 mb-16">
+        Have a question, opportunity, or project in mind? I'd love to hear from you.
       </p>
 
-      <div>
+      <div className="dark:bg-slate-900 rounded-2xl p-8 shadow-lg">
         <form
           onSubmit={onSubmit}
-          className="contact-form fade-in"
+          className="space-y-6"
         >
           <input
             id="name"
@@ -94,6 +94,7 @@ function Contact() {
             value={formData.name}
             onChange={handleChange}
             required
+            className="mt-8 rounded-xl p-5 shadow-lg w-full dark:text-white dark:bg-slate-800 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 cursor-pointer"
           />
 
           <input
@@ -104,6 +105,7 @@ function Contact() {
             value={formData.email}
             onChange={handleChange}
             required
+            className="mt-8 rounded-xl p-5 shadow-lg w-full dark:text-white dark:bg-slate-800 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 cursor-pointer"
           />
 
           <input
@@ -114,6 +116,7 @@ function Contact() {
             value={formData.subject}
             onChange={handleChange}
             required
+            className="mt-8 rounded-xl p-5 shadow-lg w-full dark:text-white dark:bg-slate-800 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 cursor-pointer"
           />
 
           <textarea
@@ -123,13 +126,23 @@ function Contact() {
             value={formData.message}
             onChange={handleChange}
             required
+            className="mt-8 rounded-xl p-5 shadow-lg w-full dark:text-white dark:bg-slate-800 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 cursor-pointer"
           />
 
-          <button type="submit">Send</button>
+          <button type="submit" className="w-full bg-blue-500 hover:bg-blue-500 py-4 rounded-lg font-semibold transition cursor-pointer">Send</button>
         </form>
 
-        <p id="result">{result}</p>
+        <p id="result">{result && (
+          <div className="mt-6 text-center">
+              <p className={`${result.includes("successfully") ? "text-green-400" : "text-red-400"}`}>
+                {result}
+              </p>
+          </div>
+        )}
+        </p>
       </div>
+    </div>
+  </section>
     </>
   );
 }

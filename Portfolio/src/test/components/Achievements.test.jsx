@@ -1,102 +1,118 @@
-import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom/vitest';
-import { describe, test, expect } from 'vitest';
-import Achivements from '../../components/Achivements';
+import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom/vitest";
+import { describe, test, expect } from "vitest";
+import Achievements from "../../components/Achievements";
 
-describe('Achivements Component', () => {
-  test('renders achievements heading', () => {
-    render(<Achivements />);
+describe("Achievements Component", () => {
+  test("renders achievements heading", () => {
+    render(<Achievements />);
 
-    expect(screen.getByText('Achievements')).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", {
+        name: /achievements/i,
+      })
+    ).toBeInTheDocument();
   });
 
-  test('renders introduction text', () => {
-    render(<Achivements />);
+  test("renders introduction text", () => {
+    render(<Achievements />);
 
     expect(
       screen.getByText(
-        /Here are some milestones that reflect my growth/i
+        /academic growth, dedication, and commitment to excellence/i
       )
     ).toBeInTheDocument();
   });
 
-  test('renders President List achievement', () => {
-    render(<Achivements />);
+  test("renders President's List achievement", () => {
+    render(<Achievements />);
 
     expect(
-      screen.getByText(
-        /University of South Carolina - President's List/i
-      )
+      screen.getByText(/president's list/i)
     ).toBeInTheDocument();
   });
 
-  test('renders Dean List achievement', () => {
-    render(<Achivements />);
+  test("renders Dean's List achievement", () => {
+    render(<Achievements />);
 
     expect(
-      screen.getByText(
-        /University of South Carolina - Dean's List/i
-      )
+      screen.getByText(/dean's list/i)
     ).toBeInTheDocument();
   });
 
-  test('renders SC Life Scholarship achievement', () => {
-    render(<Achivements />);
+  test("renders SC LIFE Scholarship achievement", () => {
+    render(<Achievements />);
 
     expect(
-      screen.getByText(
-        /University of South Carolina - SC Life Scholarship/i
-      )
+      screen.getByText(/sc life scholarship/i)
     ).toBeInTheDocument();
   });
 
-  test('renders institution names', () => {
-    render(<Achivements />);
+  test("renders university name three times", () => {
+    render(<Achievements />);
 
-    const institutions = screen.getAllByText(
-      /University of South Carolina, Columbia/i
+    const universities = screen.getAllByText(
+      /university of south carolina/i
     );
 
-    expect(institutions).toHaveLength(3);
+    expect(universities).toHaveLength(3);
   });
 
-  test('renders three achievement years', () => {
-    render(<Achivements />);
+  test("renders achievement years", () => {
+    render(<Achievements />);
 
-    const institutions = document.querySelectorAll('.institution');
+    expect(
+      screen.getByText(/2023-2024/i)
+    ).toBeInTheDocument();
 
-    expect(institutions).toHaveLength(3);
+    expect(
+      screen.getByText(/2024-2025/i)
+    ).toBeInTheDocument();
 
-    expect(institutions[0]).toHaveTextContent('2023-2024');
-    expect(institutions[1]).toHaveTextContent('2024-2025');
-    expect(institutions[2]).toHaveTextContent('2023');
-  })
+    expect(
+      screen.getByText(
+        /university of south carolina • 2023$/i
+      )
+    ).toBeInTheDocument();
+  });
 
-  test('renders all achievement descriptions', () => {
-    render(<Achivements />);
+  test("renders first achievement description", () => {
+    render(<Achievements />);
 
-    const descriptions = screen.getAllByText(
-      /academic excellence and dedication to my studies/i
+    expect(
+      screen.getByText(
+        /outstanding academic performance/i
+      )
+    ).toBeInTheDocument();
+  });
+
+  test("renders second achievement description", () => {
+    render(<Achievements />);
+
+    expect(
+      screen.getByText(
+        /academic excellence and consistent achievement/i
+      )
+    ).toBeInTheDocument();
+  });
+
+  test("renders third achievement description", () => {
+    render(<Achievements />);
+
+    expect(
+      screen.getByText(
+        /merit-based scholarship awarded/i
+      )
+    ).toBeInTheDocument();
+  });
+
+  test("renders exactly three achievement cards", () => {
+    render(<Achievements />);
+
+    const universities = screen.getAllByText(
+      /university of south carolina/i
     );
 
-    expect(descriptions).toHaveLength(3);
-  });
-
-  test('renders three timeline items', () => {
-    const { container } = render(<Achivements />);
-
-    const timelineItems =
-      container.querySelectorAll('.timeline-item');
-
-    expect(timelineItems.length).toBe(3);
-  });
-
-  test('renders three timeline dots', () => {
-    const { container } = render(<Achivements />);
-
-    const timelineDots =
-      container.querySelectorAll('.timeline-dot');
-
-    expect(timelineDots.length).toBe(3);
+    expect(universities).toHaveLength(3);
   });
 });

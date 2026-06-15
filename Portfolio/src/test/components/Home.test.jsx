@@ -1,109 +1,130 @@
-import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom/vitest';
-import { describe, test, expect, vi } from 'vitest';
-import Home from '../../components/Home';
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom/vitest";
+import { describe, test, expect, vi } from "vitest";
+import Home from "../../components/Home";
 
-// Mock image import
-vi.mock('/photo/Profile-pic.png', () => ({
-  default: 'profile-pic.png',
+vi.mock("/photo/Profile-pic.png", () => ({
+  default: "profile-pic.png",
 }));
 
-describe('Home Component', () => {
-  test('renders greeting message', () => {
-    render(<Home />);
-    expect(screen.getByText('Hi there!')).toBeInTheDocument();
-  });
-
-  test('renders name correctly', () => {
-    render(<Home />);
-    expect(screen.getByText("I'm Hardik Marlapudi")).toBeInTheDocument();
-  });
-
-  test('renders profile image', () => {
+describe("Home Component", () => {
+  test("renders main heading", () => {
     render(<Home />);
 
-    const image = screen.getByAltText('Profile Pic');
-
-    expect(image).toBeInTheDocument();
-    expect(image).toHaveAttribute('src');
+    expect(
+      screen.getByRole("heading", {
+        name: /hi there/i,
+      })
+    ).toBeInTheDocument();
   });
 
-  test('renders introduction section', () => {
+  test("renders user name", () => {
+    render(<Home />);
+
+    expect(
+      screen.getByText(/hardik marlapudi/i)
+    ).toBeInTheDocument();
+  });
+
+  test("renders introduction heading", () => {
+    render(<Home />);
+
+    expect(
+      screen.getByText(/let me introduce myself/i)
+    ).toBeInTheDocument();
+  });
+
+  test("renders university description", () => {
     render(<Home />);
 
     expect(
       screen.getByText(
-        /I am a student at the University of South Carolina/i
+        /university of south carolina/i
       )
     ).toBeInTheDocument();
-
-    expect(
-      screen.getByText(/JavaScript, React.js, and Java/i)
-    ).toBeInTheDocument();
   });
 
-  test('renders field of interest section', () => {
+  test("renders technology description", () => {
     render(<Home />);
 
     expect(
-      screen.getByText(/building new Web Technologies and Products/i)
+      screen.getByText(
+        /javascript, react, java, html, css/i
+      )
     ).toBeInTheDocument();
+  });
+
+  test("renders profile image", () => {
+    render(<Home />);
+
+    const image = screen.getByAltText(/profile/i);
+
+    expect(image).toBeInTheDocument();
+    expect(image).toHaveAttribute("src");
+  });
+
+  test("renders find me on section", () => {
+    render(<Home />);
 
     expect(
-      screen.getByText(/Blockchain/i)
+      screen.getByText(/find me on/i)
     ).toBeInTheDocument();
   });
 
-  test('renders Find Me On section', () => {
+  test("renders github link", () => {
     render(<Home />);
 
-    expect(screen.getByText('FIND ME ON')).toBeInTheDocument();
-    expect(screen.getByText('Feel free to connect me')).toBeInTheDocument();
+    const githubLink = screen
+      .getAllByRole("link")
+      .find(link =>
+        link.href.includes("github.com")
+      );
+
+    expect(githubLink).toBeInTheDocument();
   });
 
-  test('renders all social media links', () => {
+  test("renders linkedin link", () => {
     render(<Home />);
 
-    const links = screen.getAllByRole('link');
+    const linkedinLink = screen
+      .getAllByRole("link")
+      .find(link =>
+        link.href.includes("linkedin.com")
+      );
 
-    expect(links).toHaveLength(4);
+    expect(linkedinLink).toBeInTheDocument();
   });
 
-  test('renders LinkedIn link correctly', () => {
+  test("renders instagram link", () => {
     render(<Home />);
 
-    const links = screen.getAllByRole('link');
+    const instagramLink = screen
+      .getAllByRole("link")
+      .find(link =>
+        link.href.includes("instagram.com")
+      );
 
-    expect(links[2]).toHaveAttribute(
-      'href',
-      'https://www.linkedin.com/in/hardik-marlapudi-b47a14307/'
-    );
+    expect(instagramLink).toBeInTheDocument();
   });
 
-  test('renders Instagram links correctly', () => {
+  test("renders email link", () => {
     render(<Home />);
 
-    const links = screen.getAllByRole('link');
+    const emailLink = screen
+      .getAllByRole("link")
+      .find(link =>
+        link.href.startsWith("mailto:")
+      );
 
-    expect(links[0]).toHaveAttribute(
-      'href',
-      'https://www.instagram.com/hardik_marlapudi'
-    );
-
-    expect(links[3]).toHaveAttribute(
-      'href',
-      'https://www.instagram.com/hardik_marlapudi'
-    );
+    expect(emailLink).toBeInTheDocument();
   });
 
-  test('renders Gmail link correctly', () => {
+  test("renders exactly four social links", () => {
     render(<Home />);
 
-    const links = screen.getAllByRole('link');
-
-    expect(links[1]).toHaveAttribute(
-      'href',
-      'https://www.hardik.a.marlapudi@gmail.com'
-    );
+    expect(
+      screen.getAllByRole("link")
+    ).toHaveLength(4);
   });
 });

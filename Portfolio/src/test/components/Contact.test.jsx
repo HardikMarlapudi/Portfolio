@@ -1,208 +1,240 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import '@testing-library/jest-dom/vitest';
-import { describe, test, expect, vi, beforeEach } from 'vitest';
-import Contact from '../../components/Contact';
+import React from "react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import "@testing-library/jest-dom/vitest";
+import { describe, test, expect, vi, beforeEach } from "vitest";
+import Contact from "../../components/Contact";
 
-describe('Contact Component', () => {
+describe("Contact Component", () => {
   beforeEach(() => {
-    vi.restoreAllMocks();
+    global.fetch = vi.fn();
   });
 
-  test('renders contact heading', () => {
+  test("renders contact heading", () => {
     render(<Contact />);
 
-    expect(screen.getByText('Contact')).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", {
+        name: /contact me/i,
+      })
+    ).toBeInTheDocument();
   });
 
-  test('renders subtitle', () => {
+  test("renders description text", () => {
     render(<Contact />);
 
     expect(
       screen.getByText(
-        /Have a question or a project in mind/i
+        /have a question, opportunity, or project in mind/i
       )
     ).toBeInTheDocument();
   });
 
-  test('renders all form fields', () => {
-    render(<Contact />);
-
-    expect(screen.getByPlaceholderText('Name:')).toBeInTheDocument();
-    expect(screen.getByPlaceholderText('Email:')).toBeInTheDocument();
-    expect(screen.getByPlaceholderText('Subject:')).toBeInTheDocument();
-    expect(
-      screen.getByPlaceholderText('Send a message...')
-    ).toBeInTheDocument();
-  });
-
-  test('renders send button', () => {
+  test("renders all form fields", () => {
     render(<Contact />);
 
     expect(
-      screen.getByRole('button', { name: /send/i })
+      screen.getByPlaceholderText(/name:/i)
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByPlaceholderText(/email:/i)
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByPlaceholderText(/subject:/i)
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByPlaceholderText(/send a message/i)
     ).toBeInTheDocument();
   });
 
-  test('allows typing into name field', () => {
+  test("allows typing into form fields", () => {
     render(<Contact />);
 
-    const input = screen.getByPlaceholderText('Name:');
+    const nameInput =
+      screen.getByPlaceholderText(/name:/i);
 
-    fireEvent.change(input, {
-      target: { name: 'name', value: 'Hardik' },
+    fireEvent.change(nameInput, {
+      target: { value: "Hardik" },
     });
 
-    expect(input.value).toBe('Hardik');
+    expect(nameInput.value).toBe("Hardik");
   });
 
-  test('allows typing into email field', () => {
+  test("renders submit button", () => {
     render(<Contact />);
 
-    const input = screen.getByPlaceholderText('Email:');
-
-    fireEvent.change(input, {
-      target: {
-        name: 'email',
-        value: 'hardik@example.com',
-      },
-    });
-
-    expect(input.value).toBe('hardik@example.com');
-  });
-
-  test('allows typing into subject field', () => {
-    render(<Contact />);
-
-    const input = screen.getByPlaceholderText('Subject:');
-
-    fireEvent.change(input, {
-      target: {
-        name: 'subject',
-        value: 'Portfolio Question',
-      },
-    });
-
-    expect(input.value).toBe('Portfolio Question');
-  });
-
-  test('allows typing into message field', () => {
-    render(<Contact />);
-
-    const textarea = screen.getByPlaceholderText(
-      'Send a message...'
-    );
-
-    fireEvent.change(textarea, {
-      target: {
-        name: 'message',
-        value: 'Hello from testing.',
-      },
-    });
-
-    expect(textarea.value).toBe('Hello from testing.');
-  });
-
-  test('shows success message after successful submission', async () => {
-    global.fetch = vi.fn(() =>
-      Promise.resolve({
-        json: () =>
-          Promise.resolve({
-            success: true,
-          }),
+    expect(
+      screen.getByRole("button", {
+        name: /send/i,
       })
+    ).toBeInTheDocument();
+  });
+
+  test("shows sending message while submitting", async () => {
+    fetch.mockImplementation(
+      () => new Promise(() => {})
     );
 
     render(<Contact />);
-
-    fireEvent.change(screen.getByPlaceholderText('Name:'), {
-      target: { name: 'name', value: 'Hardik' },
-    });
-
-    fireEvent.change(screen.getByPlaceholderText('Email:'), {
-      target: {
-        name: 'email',
-        value: 'hardik@example.com',
-      },
-    });
-
-    fireEvent.change(screen.getByPlaceholderText('Subject:'), {
-      target: {
-        name: 'subject',
-        value: 'Test Subject',
-      },
-    });
 
     fireEvent.change(
-      screen.getByPlaceholderText('Send a message...'),
-      {
-        target: {
-          name: 'message',
-          value: 'Test Message',
-        },
-      }
+      screen.getByPlaceholderText(/name:/i),
+      { target: { value: "Hardik" } }
+    );
+
+    fireEvent.change(
+      screen.getByPlaceholderText(/email:/i),
+      { target: { value: "hardik@test.com" } }
+    );
+
+    fireEvent.change(
+      screen.getByPlaceholderText(/subject:/i),
+      { target: { value: "Test" } }
+    );
+
+    fireEvent.change(
+      screen.getByPlaceholderText(/send a message/i),
+      { target: { value: "Hello" } }
     );
 
     fireEvent.click(
-      screen.getByRole('button', { name: /send/i })
+      screen.getByRole("button", {
+        name: /send/i,
+      })
+    );
+
+    expect(
+      screen.getByText(/sending/i)
+    ).toBeInTheDocument();
+  });
+
+  test("shows success message after successful submission", async () => {
+    fetch.mockResolvedValueOnce({
+      json: async () => ({
+        success: true,
+      }),
+    });
+
+    render(<Contact />);
+
+    fireEvent.change(
+      screen.getByPlaceholderText(/name:/i),
+      { target: { value: "Hardik" } }
+    );
+
+    fireEvent.change(
+      screen.getByPlaceholderText(/email:/i),
+      { target: { value: "hardik@test.com" } }
+    );
+
+    fireEvent.change(
+      screen.getByPlaceholderText(/subject:/i),
+      { target: { value: "Test" } }
+    );
+
+    fireEvent.change(
+      screen.getByPlaceholderText(/send a message/i),
+      { target: { value: "Hello" } }
+    );
+
+    fireEvent.submit(
+      screen.getByRole("button", {
+        name: /send/i,
+      }).closest("form")
     );
 
     await waitFor(() => {
       expect(
         screen.getByText(
-          /Thank you, your form has been submitted successfully/i
+          /submitted successfully/i
         )
       ).toBeInTheDocument();
     });
   });
 
-  test('shows error message when submission fails', async () => {
-    global.fetch = vi.fn(() =>
-      Promise.resolve({
-        json: () =>
-          Promise.resolve({
-            success: false,
-          }),
-      })
-    );
+  test("shows error message when API returns failure", async () => {
+    fetch.mockResolvedValueOnce({
+      json: async () => ({
+        success: false,
+      }),
+    });
 
     render(<Contact />);
 
-    fireEvent.change(screen.getByPlaceholderText('Name:'), {
-      target: { name: 'name', value: 'Hardik' },
-    });
-
-    fireEvent.change(screen.getByPlaceholderText('Email:'), {
-      target: {
-        name: 'email',
-        value: 'hardik@example.com',
-      },
-    });
-
-    fireEvent.change(screen.getByPlaceholderText('Subject:'), {
-      target: {
-        name: 'subject',
-        value: 'Testing',
-      },
-    });
-
     fireEvent.change(
-      screen.getByPlaceholderText('Send a message...'),
-      {
-        target: {
-          name: 'message',
-          value: 'Test message',
-        },
-      }
+      screen.getByPlaceholderText(/name:/i),
+      { target: { value: "Hardik" } }
     );
 
-    fireEvent.click(
-      screen.getByRole('button', { name: /send/i })
+    fireEvent.change(
+      screen.getByPlaceholderText(/email:/i),
+      { target: { value: "hardik@test.com" } }
+    );
+
+    fireEvent.change(
+      screen.getByPlaceholderText(/subject:/i),
+      { target: { value: "Test" } }
+    );
+
+    fireEvent.change(
+      screen.getByPlaceholderText(/send a message/i),
+      { target: { value: "Hello" } }
+    );
+
+    fireEvent.submit(
+      screen.getByRole("button", {
+        name: /send/i,
+      }).closest("form")
     );
 
     await waitFor(() => {
       expect(
         screen.getByText(
-          'Sorry, something went wrong while submitting the form.'
+          /something went wrong/i
+        )
+      ).toBeInTheDocument();
+    });
+  });
+
+  test("shows error message when fetch throws error", async () => {
+    fetch.mockRejectedValueOnce(
+      new Error("Network Error")
+    );
+
+    render(<Contact />);
+
+    fireEvent.change(
+      screen.getByPlaceholderText(/name:/i),
+      { target: { value: "Hardik" } }
+    );
+
+    fireEvent.change(
+      screen.getByPlaceholderText(/email:/i),
+      { target: { value: "hardik@test.com" } }
+    );
+
+    fireEvent.change(
+      screen.getByPlaceholderText(/subject:/i),
+      { target: { value: "Test" } }
+    );
+
+    fireEvent.change(
+      screen.getByPlaceholderText(/send a message/i),
+      { target: { value: "Hello" } }
+    );
+
+    fireEvent.submit(
+      screen.getByRole("button", {
+        name: /send/i,
+      }).closest("form")
+    );
+
+    await waitFor(() => {
+      expect(
+        screen.getByText(
+          /something went wrong/i
         )
       ).toBeInTheDocument();
     });

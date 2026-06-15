@@ -1,41 +1,102 @@
-import React from 'react';
-import '/src/css/Home.css';
-import profile from '/photo/Profile-pic.png';
+import React, {useState, useEffect} from "react";
+import profile from "/photo/Profile-pic.png";
 import { FaGithub } from "react-icons/fa";
-import { FaLinkedin } from 'react-icons/fa';
+import { FaLinkedin } from "react-icons/fa";
 import { BiLogoGmail } from "react-icons/bi";
-import { FaInstagram } from 'react-icons/fa';
+import { FaInstagram } from "react-icons/fa";
 
 function Home() {
 
+    const [darkMode, setDarkMode] = useState(true);
+
+    useEffect(() => {
+        if(darkMode) {
+            document.documentElement.classList.add("dark");
+        } else {
+            document.documentElement.class.remove("dark");
+        }
+    }, [setDarkMode]);
+
     return (
         <>
-        <div className="intro fade-in">
-            <h1 id="title">Hi there!</h1>
-            <center><img src={profile} id="profilePhoto" alt="Profile Pic"></img></center>
-            <p id="name">I'm Hardik Marlapudi</p>
-        </div>
-        
-        <div className="aboutMe fade-in">
-            <h2 id="aboutMyself">LET ME INTRODUCE MYSELF</h2>
-            <p id="aboutMe">I am a student at the University of South Carolina and I fell love with programming for quite a while now.</p>
-            <p id="aboutMe">I am fluent in classics like JavaScript, React.js, and Java.</p>
+            <div className="min-h-screen bg-white text-black dark:bg-slate-950 dark:text-white px-6 py-12 transition duration-500">
+                <div className="mt-16 bg-gray-100 dark:bg-slate-900 rounded-xl p-8 shadow-lg">
 
-            <p id="aboutMe">My Field of Interest's are building new Web Technologies and Products and also in areas related to Blockchain.</p>
+                    <div className="text-center">
+                        <h1 className="text-5xl font-bold mb-8">
+                            Hi There!
+                        </h1>
 
-            <p id="aboutme">Whenever possible, I also like applying my passion for developing products with Node.js and Modern JavaScript Libraries like React.js and Vue.js</p>
-        </div>
+                        <img src={profile} alt="Profile" className="w-64- h-64 rounded-full mx-auto object-hover border-4 border-blue-500 shadow-xl" />
 
-        <div className="border fade-in">
-            <h1 id="firstBorder">FIND ME ON</h1>
-            <p>Feel free to connect me</p>
-            <p id="buttons">
-                <a href="https://www.instagram.com/hardik_marlapudi" target="_blank"><FaGithub /></a>
-                <a href="https://www.hardik.a.marlapudi@gmail.com" target="_blank"><BiLogoGmail /></a>
-                <a href="https://www.linkedin.com/in/hardik-marlapudi-b47a14307/" target="_blank"><FaLinkedin /></a>
-                <a href="https://www.instagram.com/hardik_marlapudi" target="_blank"><FaInstagram /></a>
-            </p>
-        </div>
+                        <h2 className="text-3xl font-semibold mt-8">I'm Hardik Marlapudi</h2>
+                    </div>
+
+                    <div className="mt-16 bg-gray-100 dark:bg-slate-900 rounded-xl p-8 shadow-lg">
+                        <h2 className="text-center text-3xl font-bold text-blue-500 mb-6">
+                            Let Me Introduce Myself
+                        </h2>
+
+                        <p className="text-center text-lg mb-4">
+                            I am a student at the University of South Carolina and I have been passionate about software development for several years.
+                        </p>
+
+                        <p className="text-center text-lg mb-4">
+                            I work primilary with JavaScript, React, Java, HTML, CSS, and modern web technologies.
+                        </p>
+
+                        <p className="text-center text-lg mb-4">
+                            I enjoy building projects that solve real-world problems while continously improving my technical skills.
+                        </p>
+
+                        <div className="mt-16 text-center">
+                            <h2 className="text-3xl font-bold mb-4">
+                                Find me on
+                            </h2>
+
+                            <p className="mb-8 text-gray-600 dark:text-gray-300">
+                                Feel Free to connect with me
+                            </p>
+
+                            <div className="flex justify-center gap-8 text-3xl">
+                                <a 
+                                href="https://github.com/HardikMarlapudi"
+                                target="_blank"
+                                rel="noreferrer"
+                                className="hover:text-green-500 transition"
+                                >
+                                    <FaGithub />
+                                </a>
+
+                                <a
+                                href="mailto:hardik.a.marlapudi@gmail.com"
+                                className="hover:text-red-400 transition"
+                                >
+                                    <BiLogoGmail />
+                                </a>
+
+                                <a
+                                href="https://www.linkedin.com/in/hardik-marlapudi-159102224/"
+                                target="_blank"
+                                rel="noreferrer"
+                                className="hover:text-blue-500 transition"
+                                >
+                                    <FaLinkedin />
+                                </a>
+
+                                <a 
+                                href="https://www.instagram.com/hardik_marlapudi/"
+                                target="_blank"
+                                rel="noreferrer"
+                                className="hover:text-pink-300 transition"
+                                >
+                                    <FaInstagram />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
     );
 }

@@ -1,10 +1,11 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/vitest';
-import { describe, test, expect } from 'vitest';
-import { MemoryRouter } from 'react-router-dom';
-import Navbar from '../../components/Navbar';
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom/vitest";
+import { describe, test, expect } from "vitest";
+import { MemoryRouter } from "react-router-dom";
+import Navbar from "../../components/Navbar";
 
-describe('Navbar Component', () => {
+describe("Navbar Component", () => {
   const renderNavbar = () =>
     render(
       <MemoryRouter>
@@ -12,145 +13,131 @@ describe('Navbar Component', () => {
       </MemoryRouter>
     );
 
-  test('renders navigation bar', () => {
+  test("renders navigation element", () => {
     renderNavbar();
 
     expect(
-      screen.getByRole('navigation')
+      screen.getByRole("navigation")
     ).toBeInTheDocument();
   });
 
-  test('renders hamburger button', () => {
+  test("renders Home link", () => {
     renderNavbar();
 
     expect(
-      screen.getByRole('button', {
-        name: /toggle navigation menu/i,
+      screen.getByRole("link", { name: /home/i })
+    ).toBeInTheDocument();
+  });
+
+  test("renders About link", () => {
+    renderNavbar();
+
+    expect(
+      screen.getByRole("link", { name: /about/i })
+    ).toBeInTheDocument();
+  });
+
+  test("renders Projects link", () => {
+    renderNavbar();
+
+    expect(
+      screen.getByRole("link", { name: /projects/i })
+    ).toBeInTheDocument();
+  });
+
+  test("renders Resume link", () => {
+    renderNavbar();
+
+    expect(
+      screen.getByRole("link", { name: /resume/i })
+    ).toBeInTheDocument();
+  });
+
+  test("renders Achievements link", () => {
+    renderNavbar();
+
+    expect(
+      screen.getByRole("link", {
+        name: /achievements/i,
       })
     ).toBeInTheDocument();
   });
 
-  test('renders Home link', () => {
+  test("renders Contact link", () => {
     renderNavbar();
 
     expect(
-      screen.getByRole('link', { name: 'Home' })
-    ).toBeInTheDocument();
-  });
-
-  test('renders About link', () => {
-    renderNavbar();
-
-    expect(
-      screen.getByRole('link', { name: 'About' })
-    ).toBeInTheDocument();
-  });
-
-  test('renders Projects link', () => {
-    renderNavbar();
-
-    expect(
-      screen.getByRole('link', { name: 'Projects' })
-    ).toBeInTheDocument();
-  });
-
-  test('renders Resume link', () => {
-    renderNavbar();
-
-    expect(
-      screen.getByRole('link', { name: 'Resume' })
-    ).toBeInTheDocument();
-  });
-
-  test('renders Achievements link', () => {
-    renderNavbar();
-
-    expect(
-      screen.getByRole('link', {
-        name: /achivements/i,
+      screen.getByRole("link", {
+        name: /contact/i,
       })
     ).toBeInTheDocument();
   });
 
-  test('renders Contact link', () => {
+  test("renders six navigation links", () => {
     renderNavbar();
 
     expect(
-      screen.getByRole('link', { name: 'Contact' })
-    ).toBeInTheDocument();
+      screen.getAllByRole("link")
+    ).toHaveLength(6);
   });
 
-  test('contains six navigation links', () => {
-    renderNavbar();
-
-    const links = screen.getAllByRole('link');
-
-    expect(links).toHaveLength(6);
-  });
-
-  test('hamburger button toggles menu open', () => {
-    renderNavbar();
-
-    const button = screen.getByRole('button', {
-      name: /toggle navigation menu/i,
-    });
-
-    expect(button).toHaveAttribute(
-      'aria-expanded',
-      'false'
-    );
-
-    fireEvent.click(button);
-
-    expect(button).toHaveAttribute(
-      'aria-expanded',
-      'true'
-    );
-  });
-
-  test('hamburger button toggles menu closed', () => {
-    renderNavbar();
-
-    const button = screen.getByRole('button', {
-      name: /toggle navigation menu/i,
-    });
-
-    fireEvent.click(button);
-    fireEvent.click(button);
-
-    expect(button).toHaveAttribute(
-      'aria-expanded',
-      'false'
-    );
-  });
-
-  test('navigation links have correct routes', () => {
+  test("home link points to root route", () => {
     renderNavbar();
 
     expect(
-      screen.getByRole('link', { name: 'Home' })
-    ).toHaveAttribute('href', '/home');
-
-    expect(
-      screen.getByRole('link', { name: 'About' })
-    ).toHaveAttribute('href', '/about');
-
-    expect(
-      screen.getByRole('link', { name: 'Projects' })
-    ).toHaveAttribute('href', '/projects');
-
-    expect(
-      screen.getByRole('link', { name: 'Resume' })
-    ).toHaveAttribute('href', '/resume');
-
-    expect(
-      screen.getByRole('link', {
-        name: /achivements/i,
+      screen.getByRole("link", {
+        name: /home/i,
       })
-    ).toHaveAttribute('href', '/Achievements');
+    ).toHaveAttribute("href", "/");
+  });
+
+  test("about link points to about route", () => {
+    renderNavbar();
 
     expect(
-      screen.getByRole('link', { name: 'Contact' })
-    ).toHaveAttribute('href', '/contact');
+      screen.getByRole("link", {
+        name: /about/i,
+      })
+    ).toHaveAttribute("href", "/about");
+  });
+
+  test("projects link points to projects route", () => {
+    renderNavbar();
+
+    expect(
+      screen.getByRole("link", {
+        name: /projects/i,
+      })
+    ).toHaveAttribute("href", "/projects");
+  });
+
+  test("resume link points to resume route", () => {
+    renderNavbar();
+
+    expect(
+      screen.getByRole("link", {
+        name: /resume/i,
+      })
+    ).toHaveAttribute("href", "/resume");
+  });
+
+  test("achievements link points to achievements route", () => {
+    renderNavbar();
+
+    expect(
+      screen.getByRole("link", {
+        name: /achievements/i,
+      })
+    ).toHaveAttribute("href", "/achievements");
+  });
+
+  test("contact link points to contact route", () => {
+    renderNavbar();
+
+    expect(
+      screen.getByRole("link", {
+        name: /contact/i,
+      })
+    ).toHaveAttribute("href", "/contact");
   });
 });

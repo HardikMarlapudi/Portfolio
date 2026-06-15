@@ -1,164 +1,119 @@
-import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom/vitest';
-import { describe, test, expect } from 'vitest';
-import Projects from '../../components/Projects';
+import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom";
+import Projects from "../../components/Projects";
 
-describe('Projects Component', () => {
-  test('renders page title', () => {
+describe("Projects Component", () => {
+  test("renders page heading", () => {
     render(<Projects />);
 
     expect(
-      screen.getByText('My Recent Works')
+      screen.getByRole("heading", {
+        name: /my recent work/i,
+      })
     ).toBeInTheDocument();
   });
 
-  test('renders project description text', () => {
+  test("renders description text", () => {
     render(<Projects />);
 
     expect(
       screen.getByText(
-        /Here are a few projects I've worked on recently/i
+        /here are a few projects i've worked on recently/i
       )
     ).toBeInTheDocument();
   });
 
-  test('renders Calculator Program project', () => {
+  test("renders all project titles", () => {
     render(<Projects />);
 
     expect(
-      screen.getByRole('link', {
-        name: /calculator program/i,
-      })
+      screen.getByText("Calculator Program")
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByText("BMI Calculator")
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByText("Portfolio")
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByText("Quote Generator")
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByText("Pokedex")
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByText("Digital Clock")
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByText("Recipe Finder")
     ).toBeInTheDocument();
   });
 
-  test('renders BMI Calculator project', () => {
+  test("renders seven project cards", () => {
     render(<Projects />);
 
-    expect(
-      screen.getByRole('link', {
-        name: /bmi calculator/i,
-      })
-    ).toBeInTheDocument();
+    const buttons = screen.getAllByRole("link", {
+      name: /view project/i,
+    });
+
+    expect(buttons).toHaveLength(7);
   });
 
-  test('renders Portfolio project', () => {
+  test("renders seven project images", () => {
     render(<Projects />);
 
-    expect(
-      screen.getByRole('link', {
-        name: /^portfolio$/i,
-      })
-    ).toBeInTheDocument();
+    const images = screen.getAllByRole("img");
+
+    expect(images).toHaveLength(7);
   });
 
-  test('renders Quote Generator project', () => {
+  test("renders calculator project link", () => {
     render(<Projects />);
 
-    expect(
-      screen.getByRole('link', {
-        name: /quote generator/i,
-      })
-    ).toBeInTheDocument();
-  });
+    const calculatorLink = screen
+      .getAllByRole("link", {
+        name: /view project/i,
+      })[0];
 
-  test('renders Pokedex project', () => {
-    render(<Projects />);
-
-    expect(
-      screen.getByRole('link', {
-        name: /pokedex/i,
-      })
-    ).toBeInTheDocument();
-  });
-
-  test('renders five project links', () => {
-    render(<Projects />);
-
-    const links = screen.getAllByRole('link');
-
-    expect(links).toHaveLength(5);
-  });
-
-  test('renders five project images', () => {
-    render(<Projects />);
-
-    const images = screen.getAllByRole('img');
-
-    expect(images).toHaveLength(5);
-  });
-
-  test('renders calculator repository link', () => {
-    render(<Projects />);
-
-    expect(
-      screen.getByRole('link', {
-        name: /calculator program/i,
-      })
-    ).toHaveAttribute(
-      'href',
-      'https://github.com/HardikMarlapudi/Calculator_React.js'
+    expect(calculatorLink).toHaveAttribute(
+      "href",
+      "https://hardikmarlapudi.github.io/Calculator_React.js/"
     );
   });
 
-  test('renders BMI repository link', () => {
+  test("all project links open in new tab", () => {
     render(<Projects />);
 
-    expect(
-      screen.getByRole('link', {
-        name: /bmi calculator/i,
-      })
-    ).toHaveAttribute(
-      'href',
-      'https://github.com/HardikMarlapudi/BMI-Calculator'
-    );
+    const links = screen.getAllByRole("link", {
+      name: /view project/i,
+    });
+
+    links.forEach((link) => {
+      expect(link).toHaveAttribute(
+        "target",
+        "_blank"
+      );
+    });
   });
 
-  test('renders Portfolio repository link', () => {
+  test("all project links have security attributes", () => {
     render(<Projects />);
 
-    expect(
-      screen.getByRole('link', {
-        name: /^portfolio$/i,
-      })
-    ).toHaveAttribute(
-      'href',
-      'https://github.com/HardikMarlapudi/Portfolio'
-    );
-  });
+    const links = screen.getAllByRole("link", {
+      name: /view project/i,
+    });
 
-  test('renders Quote Generator repository link', () => {
-    render(<Projects />);
-
-    expect(
-      screen.getByRole('link', {
-        name: /quote generator/i,
-      })
-    ).toHaveAttribute(
-      'href',
-      'https://github.com/HardikMarlapudi/QuoteGenerator'
-    );
-  });
-
-  test('renders Pokedex repository link', () => {
-    render(<Projects />);
-
-    expect(
-      screen.getByRole('link', {
-        name: /pokedex/i,
-      })
-    ).toHaveAttribute(
-      'href',
-      'https://github.com/HardikMarlapudi/Pokedex'
-    );
-  });
-
-  test('renders five project cards', () => {
-    const { container } = render(<Projects />);
-
-    const cards =
-      container.querySelectorAll('.project-card-view');
-
-    expect(cards).toHaveLength(5);
+    links.forEach((link) => {
+      expect(link).toHaveAttribute(
+        "rel",
+        "noopener noreferrer"
+      );
+    });
   });
 });

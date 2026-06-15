@@ -1,116 +1,91 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/vitest';
-import { describe, test, expect, beforeEach } from 'vitest';
-import Toggle from '../../components/Toggle';
+import React from "react";
+import { render, screen, fireEvent } from "@testing-library/react";
+import "@testing-library/jest-dom/vitest";
+import { describe, test, expect, beforeEach } from "vitest";
+import Toggle from '../../components/toggle.jsx';
 
-describe('Toggle Component', () => {
-  beforeEach(() => {
-    document.body.className = '';
-  });
+describe("Toggle Component", () => {
+beforeEach(() => {
+document.documentElement.classList.remove("dark");
+});
 
-  test('renders toggle button', () => {
-    render(<Toggle />);
+test("renders toggle button", () => {
+render(<Toggle />);
 
-    expect(
-      screen.getByRole('button')
-    ).toBeInTheDocument();
-  });
 
-  test('renders sun icon initially', () => {
-    render(<Toggle />);
+expect(
+  screen.getByRole("button")
+).toBeInTheDocument();
 
-    expect(
-      screen.getByText('☀')
-    ).toBeInTheDocument();
-  });
 
-  test('adds dark-mode class on initial render', () => {
-    render(<Toggle />);
+});
 
-    expect(
-      document.body.classList.contains('dark-mode')
-    ).toBe(true);
-  });
+test("shows sun icon initially", () => {
+render(<Toggle />);
 
-  test('does not have light-mode class initially', () => {
-    render(<Toggle />);
 
-    expect(
-      document.body.classList.contains('light-mode')
-    ).toBe(false);
-  });
+expect(
+  screen.getByRole("button")
+).toHaveTextContent("☀️");
 
-  test('changes icon after click', () => {
-    render(<Toggle />);
 
-    fireEvent.click(
-      screen.getByRole('button')
-    );
+});
 
-    expect(
-      screen.getByText('☾')
-    ).toBeInTheDocument();
-  });
+test("adds dark class on initial render", () => {
+render(<Toggle />);
 
-  test('adds light-mode class after click', () => {
-    render(<Toggle />);
+expect(
+  document.documentElement.classList.contains("dark")
+).toBe(true);
 
-    fireEvent.click(
-      screen.getByRole('button')
-    );
+});
 
-    expect(
-      document.body.classList.contains('light-mode')
-    ).toBe(true);
-  });
+test("toggles to light mode when clicked", () => {
+render(<Toggle />);
 
-  test('removes dark-mode class after click', () => {
-    render(<Toggle />);
 
-    fireEvent.click(
-      screen.getByRole('button')
-    );
+const button = screen.getByRole("button");
 
-    expect(
-      document.body.classList.contains('dark-mode')
-    ).toBe(false);
-  });
+fireEvent.click(button);
 
-  test('toggles back to dark mode on second click', () => {
-    render(<Toggle />);
+expect(button).toHaveTextContent("🌙");
 
-    const button = screen.getByRole('button');
+expect(
+  document.documentElement.classList.contains("dark")
+).toBe(false);
 
-    fireEvent.click(button);
-    fireEvent.click(button);
+});
 
-    expect(
-      document.body.classList.contains('dark-mode')
-    ).toBe(true);
+test("toggles back to dark mode when clicked twice", () => {
+render(<Toggle />);
 
-    expect(
-      document.body.classList.contains('light-mode')
-    ).toBe(false);
-  });
 
-  test('shows sun icon again after second click', () => {
-    render(<Toggle />);
+const button = screen.getByRole("button");
 
-    const button = screen.getByRole('button');
+fireEvent.click(button);
+fireEvent.click(button);
 
-    fireEvent.click(button);
-    fireEvent.click(button);
+expect(button).toHaveTextContent("☀️");
 
-    expect(
-      screen.getByText('☀')
-    ).toBeInTheDocument();
-  });
+expect(
+  document.documentElement.classList.contains("dark")
+).toBe(true);
 
-  test('button has correct id', () => {
-    render(<Toggle />);
 
-    expect(
-      screen.getByRole('button')
-    ).toHaveAttribute('id', 'toggleIcon');
-  });
+});
+
+test("button has correct styling classes", () => {
+render(<Toggle />);
+
+
+const button = screen.getByRole("button");
+
+expect(button).toHaveClass(
+  "fixed",
+  "bottom-6",
+  "right-6",
+  "bg-blue-600"
+);
+
+});
 });
