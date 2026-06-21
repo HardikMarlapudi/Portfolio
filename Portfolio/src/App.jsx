@@ -14,8 +14,8 @@ function App() {
 
   return (
 
-    // Full Portfolio linkage
-    
+    // Full Portfolio Linkage
+
     <>
       <Navbar />
       <Toggle />
