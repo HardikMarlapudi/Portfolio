@@ -13,6 +13,9 @@ import Contact from "./components/Contact.jsx";
 function App() {
 
   return (
+
+    // Full Portfolio linkage
+    
     <>
       <Navbar />
       <Toggle />
