@@ -14,7 +14,7 @@ function App() {
 
   return (
 
-    // Full Portfolio Linkage
+    // Full Portfolio LinkAge
 
     <>
       <Navbar />
