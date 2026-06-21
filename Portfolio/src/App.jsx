@@ -11,7 +11,7 @@ import Achievements from "./components/Achievements.jsx";
 import Contact from "./components/Contact.jsx";
 
 function App() {
-
+// Main functionality
   return (
     <>
       <Navbar />
